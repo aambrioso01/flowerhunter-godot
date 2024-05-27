@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmp6ptlsdanh1"]
+
+[ext_resource type="AudioStream" uid="uid://dv8huapgryck6" path="res://assets/music/zendovia-1.mp3" id="1_14atr"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_14atr")
+autoplay = true

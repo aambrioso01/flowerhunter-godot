@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://calybjnf7m6j4"]
+
+[ext_resource type="Texture2D" uid="uid://cmnel2wjjj03n" path="res://assets/sprites/platforms/Grass_platform_sheet.PNG" id="1_nxwti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxy2d"]
+atlas = ExtResource("1_nxwti")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aiiwg"]
+atlas = ExtResource("1_nxwti")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tf6f8"]
+atlas = ExtResource("1_nxwti")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0q2o"]
+atlas = ExtResource("1_nxwti")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03yrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxy2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aiiwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tf6f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0q2o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.7
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q06r1"]
+size = Vector2(385, 210)
+
+[node name="Grass Platform" type="AnimatableBody2D"]
+scale = Vector2(0.1, 0.1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_03yrr")
+autoplay = "default"
+frame_progress = 0.0768257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, -25)
+shape = SubResource("RectangleShape2D_q06r1")
+one_way_collision = true

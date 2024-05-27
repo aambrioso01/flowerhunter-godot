@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgevyvicj58gx"]
+
+[ext_resource type="FontFile" uid="uid://do40wacy5fggs" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_h472w"]
+[ext_resource type="Texture2D" uid="uid://bjxvix1otbq8u" path="res://assets/sprites/pickups/Gem_sheet.PNG" id="1_jjbp8"]
+[ext_resource type="Script" path="res://scripts/game/HUD.gd" id="1_vtpkr"]
+[ext_resource type="Texture2D" uid="uid://cpyvfdou1ly4j" path="res://assets/sprites/pickups/heart_gem.png" id="3_d6ssj"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_vtpkr")
+
+[node name="GemCount" type="Label" parent="."]
+offset_left = 393.606
+offset_top = 21.6725
+offset_right = 417.606
+offset_bottom = 49.6725
+scale = Vector2(3.28, 3.28)
+theme_override_fonts/font = ExtResource("1_h472w")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CoinIcon" type="Sprite2D" parent="."]
+position = Vector2(371.606, 67.6725)
+scale = Vector2(0.127617, 0.127617)
+texture = ExtResource("1_jjbp8")
+region_enabled = true
+region_rect = Rect2(0, 0, 511, 514)
+
+[node name="Life" type="Node" parent="."]
+
+[node name="Icon1" type="Sprite2D" parent="Life"]
+position = Vector2(94.3234, 66.6725)
+scale = Vector2(0.120925, 0.120925)
+texture = ExtResource("3_d6ssj")
+region_enabled = true
+region_rect = Rect2(2559.06, 541.173, 915.198, 805.07)
+
+[node name="Icon2" type="Sprite2D" parent="Life"]
+position = Vector2(261, 66.6725)
+scale = Vector2(0.120925, 0.120925)
+texture = ExtResource("3_d6ssj")
+region_enabled = true
+region_rect = Rect2(2559.06, 541.173, 915.198, 805.07)
+
+[node name="Icon3" type="Sprite2D" parent="Life"]
+position = Vector2(178, 66.6725)
+scale = Vector2(0.120925, 0.120925)
+texture = ExtResource("3_d6ssj")
+region_enabled = true
+region_rect = Rect2(2559.06, 541.173, 915.198, 805.07)

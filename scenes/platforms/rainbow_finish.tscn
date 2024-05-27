@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://gxvldbybrip1"]
+
+[ext_resource type="Texture2D" uid="uid://brek3qa1qalm" path="res://assets/sprites/platforms/rainbow_sparkling.png" id="1_ard74"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1veg"]
+atlas = ExtResource("1_ard74")
+region = Rect2(0, 0, 3831, 2766)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpgv6"]
+atlas = ExtResource("1_ard74")
+region = Rect2(3831, 0, 3831, 2766)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gftwb"]
+atlas = ExtResource("1_ard74")
+region = Rect2(7662, 0, 3831, 2766)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwy8e"]
+atlas = ExtResource("1_ard74")
+region = Rect2(0, 2766, 3831, 2766)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c85oi"]
+atlas = ExtResource("1_ard74")
+region = Rect2(3831, 2766, 3831, 2766)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an5wx"]
+atlas = ExtResource("1_ard74")
+region = Rect2(7662, 2766, 3831, 2766)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1cwk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1veg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpgv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gftwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwy8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c85oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_an5wx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifi2x"]
+size = Vector2(40.8481, 11.6514)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfdmh"]
+size = Vector2(91.517, 2.47934)
+
+[node name="RainbowFinish" type="AnimatableBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_g1cwk")
+autoplay = "default"
+frame_progress = 0.769261
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-62.4244, -40.7343)
+rotation = -0.0273167
+shape = SubResource("RectangleShape2D_ifi2x")
+one_way_collision = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(2, 6)
+rotation = 0.747375
+scale = Vector2(1.49208, 6.75324)
+shape = SubResource("RectangleShape2D_yfdmh")
+one_way_collision = true

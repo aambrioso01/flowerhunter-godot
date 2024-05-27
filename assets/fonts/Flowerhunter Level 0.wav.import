@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://boqa7hipbds1u"
+path="res://.godot/imported/Flowerhunter Level 0.wav-4bb218f2b43acc07214a6f4d351c5eef.sample"
+
+[deps]
+
+source_file="res://assets/fonts/Flowerhunter Level 0.wav"
+dest_files=["res://.godot/imported/Flowerhunter Level 0.wav-4bb218f2b43acc07214a6f4d351c5eef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
