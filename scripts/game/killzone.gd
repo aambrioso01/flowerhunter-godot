@@ -4,7 +4,6 @@ extends Area2D
 
 # Player has died
 func _on_body_entered(body):
-	print("You died")
 	# Slow-mo death
 	Engine.time_scale = 0.20
 	# Remove collison body
@@ -13,10 +12,13 @@ func _on_body_entered(body):
 	timer.start()
 
 func _on_timer_timeout():
-	# Player has lost a life
-	
-	
-	# Reset time to normal speed after death
-	Engine.time_scale = 1
-	# Reload
-	get_tree().reload_current_scene()
+	if SaveManager.lives >= 0:
+		# Player has lost a life
+		Signals.lost_life.emit()
+		# Reset time to normal speed after death
+		Engine.time_scale = 1
+		# Reload
+		get_tree().reload_current_scene()
+	if SaveManager.lives < 0:
+		# Player has died
+		GameManager.game_over()

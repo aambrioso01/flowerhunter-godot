@@ -29,22 +29,22 @@ region_rect = Rect2(0, 0, 511, 514)
 
 [node name="Life" type="Node" parent="."]
 
-[node name="Icon1" type="Sprite2D" parent="Life"]
+[node name="Icon" type="Sprite2D" parent="Life"]
 position = Vector2(94.3234, 66.6725)
 scale = Vector2(0.120925, 0.120925)
 texture = ExtResource("3_d6ssj")
 region_enabled = true
 region_rect = Rect2(2559.06, 541.173, 915.198, 805.07)
 
-[node name="Icon2" type="Sprite2D" parent="Life"]
-position = Vector2(261, 66.6725)
+[node name="Icon1" type="Sprite2D" parent="Life"]
+position = Vector2(185, 66.6725)
 scale = Vector2(0.120925, 0.120925)
 texture = ExtResource("3_d6ssj")
 region_enabled = true
 region_rect = Rect2(2559.06, 541.173, 915.198, 805.07)
 
-[node name="Icon3" type="Sprite2D" parent="Life"]
-position = Vector2(178, 66.6725)
+[node name="Icon2" type="Sprite2D" parent="Life"]
+position = Vector2(273, 66.6725)
 scale = Vector2(0.120925, 0.120925)
 texture = ExtResource("3_d6ssj")
 region_enabled = true
