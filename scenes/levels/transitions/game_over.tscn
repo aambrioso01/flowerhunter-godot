@@ -3,24 +3,30 @@
 [ext_resource type="Texture2D" uid="uid://rc6yhh4brj2s" path="res://assets/sprites/menus/background-main-menu.png" id="1_gq31a"]
 [ext_resource type="FontFile" uid="uid://do40wacy5fggs" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_argqy"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="GameOver" type="CanvasLayer"]
 follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(962, 610)
-scale = Vector2(0.459998, 0.459998)
+position = Vector2(1, 1)
+scale = Vector2(0.115, 0.115)
 texture = ExtResource("1_gq31a")
 
 [node name="Label" type="Label" parent="."]
-z_index = 1
-offset_left = -4.00002
-offset_top = 173.0
-offset_right = 155.0
-offset_bottom = 196.0
-scale = Vector2(12.1719, 14.3719)
+offset_left = -228.0
+offset_top = -101.0
+offset_right = -69.0
+offset_bottom = -78.0
+scale = Vector2(2.88271, 4.03943)
 theme_override_colors/font_color = Color(0.709804, 0.807843, 1, 1)
 theme_override_fonts/font = ExtResource("2_argqy")
 theme_override_font_sizes/font_size = 8
 text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1, -5)
+zoom = Vector2(4, 4)
+limit_bottom = 140
+position_smoothing_enabled = true
