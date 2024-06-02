@@ -1,9 +1,9 @@
 [gd_scene load_steps=27 format=3 uid="uid://bk2nhjjtjn6ym"]
 
-[ext_resource type="Script" path="res://scripts/pickups/gem.gd" id="1_h5mxl"]
+[ext_resource type="Script" path="res://scenes/pickups/strawberry.gd" id="1_lfo5m"]
 [ext_resource type="Texture2D" uid="uid://bdwjw3tv1f155" path="res://assets/sprites/brackeys/coin.png" id="2_3l5y3"]
-[ext_resource type="AudioStream" uid="uid://2rjp3m5femkb" path="res://assets/sounds/coin.wav" id="3_apk25"]
 [ext_resource type="Texture2D" uid="uid://jjbgk01mij8y" path="res://assets/sprites/pickups/Strawberry sheet.PNG" id="3_qr8x2"]
+[ext_resource type="AudioStream" uid="uid://dv0xawdcmame2" path="res://assets/sounds/crunch.mp3" id="4_y2c21"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6a8e"]
 atlas = ExtResource("2_3l5y3")
@@ -241,7 +241,7 @@ _data = {
 [node name="Strawberry" type="Area2D"]
 scale = Vector2(0.025, 0.025)
 collision_mask = 2
-script = ExtResource("1_h5mxl")
+script = ExtResource("1_lfo5m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vgn24")
@@ -253,7 +253,7 @@ scale = Vector2(20.6, 20.6)
 shape = SubResource("CircleShape2D_yw603")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_apk25")
+stream = ExtResource("4_y2c21")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
