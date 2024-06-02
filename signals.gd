@@ -6,3 +6,4 @@ signal berry_collected
 
 # Health
 signal lost_life
+signal berry_heal

@@ -30,12 +30,24 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		
+	# Player heals
+	if Input.is_action_just_pressed("berry_heal"):
+		if SaveManager.berries >= SaveManager.full_berries:
+			if SaveManager.lives < 3:
+				Signals.berry_heal.emit()
+			else:
+				print("Max lives")
+		# Player attempted to heal without enough berries
+		else:
+			print("Not enough berries!")
+	
 	# Player is starting to sprint
 	if Input.is_action_just_pressed("sprint"):
 		# Increase speed
 		sprintMultiplier = 1.4
 	if Input.is_action_just_released("sprint"):
 		sprintMultiplier = 1
+
 	# Player is falling
 	if velocity.y > 0: 
 		# Falling is faster than jumping
