@@ -58,6 +58,7 @@ func _on_berry_heal():
 	berry_bar.health = 0
 	# Update health display
 	update_life()
+	
 
 func _on_lost_life():
 	# Update life count

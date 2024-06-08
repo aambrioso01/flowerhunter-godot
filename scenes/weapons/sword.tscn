@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://da2tffaqrlvgf"]
+
+[ext_resource type="Script" path="res://scripts/weapons/sword.gd" id="1_18isr"]
+[ext_resource type="Texture2D" uid="uid://ds237upi7iw3e" path="res://assets/sprites/weapons/sword/Sword_sheet.PNG" id="2_cwsqd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ri08"]
+radius = 76.6605
+height = 370.944
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pdieg"]
+atlas = ExtResource("2_cwsqd")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_su2e2"]
+atlas = ExtResource("2_cwsqd")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkehr"]
+atlas = ExtResource("2_cwsqd")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fi6h"]
+atlas = ExtResource("2_cwsqd")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8gecg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdieg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_su2e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkehr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fi6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0fi6h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pdieg")
+}],
+"loop": false,
+"name": &"basic_attack",
+"speed": 15.0
+}]
+
+[node name="Sword" type="Node2D"]
+scale = Vector2(-1.4, 1.4)
+script = ExtResource("1_18isr")
+metadata/_edit_horizontal_guides_ = [-101.0]
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-5, 2.32831e-09)
+rotation = 0.00653176
+scale = Vector2(0.800371, 1)
+shape = SubResource("CapsuleShape2D_6ri08")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.01658, 65.6712)
+rotation = 0.569564
+sprite_frames = SubResource("SpriteFrames_8gecg")
+animation = &"basic_attack"

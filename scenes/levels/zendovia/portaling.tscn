@@ -22,8 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://w18jutm6focd" path="res://scenes/levels/transitions/finish_level.tscn" id="21_ggara"]
 [ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/platforms/portal.tscn" id="21_yukf6"]
 [ext_resource type="PackedScene" uid="uid://calybjnf7m6j4" path="res://scenes/platforms/grass_platform.tscn" id="22_erfxb"]
-[ext_resource type="PackedScene" uid="uid://ctp571iyjy4mg" path="res://scenes/levels/zendovia_brack2.tscn" id="22_q837b"]
 [ext_resource type="PackedScene" uid="uid://bk2nhjjtjn6ym" path="res://scenes/pickups/strawberry.tscn" id="23_48iol"]
+[ext_resource type="PackedScene" uid="uid://cppu0hiem7h7l" path="res://scenes/levels/zendovia/collecting_gems.tscn" id="23_h71cv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utrwg"]
 texture = ExtResource("5_x2of5")
@@ -2344,7 +2344,7 @@ rotation = -1.52554
 position = Vector2(-119, -460)
 
 [node name="FinishLevel" parent="Portal" instance=ExtResource("21_ggara")]
-next_level = ExtResource("22_q837b")
+next_level = ExtResource("23_h71cv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/FinishLevel"]
 shape = SubResource("CircleShape2D_mxfpa")

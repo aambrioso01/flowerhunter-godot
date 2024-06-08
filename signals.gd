@@ -1,5 +1,8 @@
 extends Node
 
+# Player attacks
+signal basic_attack
+
 # Collectables
 signal gem_collected
 signal berry_collected
