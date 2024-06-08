@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0itr6co7lia"]
+
+[ext_resource type="Texture2D" uid="uid://gbrdppem15nk" path="res://assets/sprites/weapons/guns/Gun_sheet.PNG" id="1_hjr85"]
+[ext_resource type="Script" path="res://scripts/weapons/water_pistol.gd" id="1_mq0ep"]
+[ext_resource type="PackedScene" uid="uid://c2cwpvlho8462" path="res://scenes/projectiles/spitball.tscn" id="2_48bn8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5jah"]
+atlas = ExtResource("1_hjr85")
+region = Rect2(0, 0, 509, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfivc"]
+atlas = ExtResource("1_hjr85")
+region = Rect2(509, 0, 509, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwg5t"]
+atlas = ExtResource("1_hjr85")
+region = Rect2(1018, 0, 509, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jb3t"]
+atlas = ExtResource("1_hjr85")
+region = Rect2(1527, 0, 509, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4tb7q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5jah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfivc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwg5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jb3t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5jah")
+}],
+"loop": false,
+"name": &"basic_attack",
+"speed": 30.0
+}]
+
+[node name="WaterPistol" type="Node2D"]
+script = ExtResource("1_mq0ep")
+Bullet = ExtResource("2_48bn8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4tb7q")
+animation = &"basic_attack"
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-195, -48)

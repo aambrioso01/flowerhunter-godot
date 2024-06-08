@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2cwpvlho8462"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/spitball.gd" id="1_vtwkf"]
+[ext_resource type="Texture2D" uid="uid://cytox40dttvjf" path="res://assets/sprites/projectiles/spitball/spitball (1).png" id="1_w5ki3"]
+[ext_resource type="AudioStream" uid="uid://dg0a50rkl4jiq" path="res://assets/sounds/water-splash-80537.mp3" id="3_ycgt0"]
+
+[node name="Spitball" type="Node2D"]
+script = ExtResource("1_vtwkf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(94, -62)
+rotation = -2.23693
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_w5ki3")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ycgt0")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"
