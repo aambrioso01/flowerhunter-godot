@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://calybjnf7m6j4"]
+[gd_scene load_steps=13 format=3 uid="uid://calybjnf7m6j4"]
 
 [ext_resource type="Texture2D" uid="uid://cmnel2wjjj03n" path="res://assets/sprites/platforms/Grass_platform_sheet.PNG" id="1_nxwti"]
+[ext_resource type="Texture2D" uid="uid://cmx4uihtkkybl" path="res://assets/sprites/platforms/Magic_grass_platform_sheet.PNG" id="2_swdr6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cxy2d"]
 atlas = ExtResource("1_nxwti")
@@ -16,6 +17,22 @@ region = Rect2(1024, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f0q2o"]
 atlas = ExtResource("1_nxwti")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx7vg"]
+atlas = ExtResource("2_swdr6")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1jsk"]
+atlas = ExtResource("2_swdr6")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1vtw"]
+atlas = ExtResource("2_swdr6")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h47y4"]
+atlas = ExtResource("2_swdr6")
 region = Rect2(1536, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_03yrr"]
@@ -36,6 +53,23 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 3.7
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx7vg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1jsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1vtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h47y4")
+}],
+"loop": true,
+"name": &"version2",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q06r1"]
@@ -46,8 +80,9 @@ scale = Vector2(0.1, 0.1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_03yrr")
-autoplay = "default"
-frame_progress = 0.0768257
+animation = &"version2"
+autoplay = "version2"
+frame_progress = 0.402781
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, -25)

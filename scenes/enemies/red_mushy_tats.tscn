@@ -1,25 +1,27 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgkmnis2fe61o"]
+[gd_scene load_steps=16 format=3 uid="uid://dgkmnis2fe61o"]
 
-[ext_resource type="Script" path="res://scripts/enemies/chomper.gd" id="1_1id72"]
-[ext_resource type="Texture2D" uid="uid://bpipj4fwbqbk0" path="res://assets/sprites/brackeys/slime_purple.png" id="2_ip345"]
+[ext_resource type="Script" path="res://scripts/enemies/mushy.gd" id="1_oykws"]
+[ext_resource type="Texture2D" uid="uid://3ogra07kneh7" path="res://assets/sprites/enemies/mushies/BulbyBlueTats.png" id="2_px8ba"]
 [ext_resource type="Texture2D" uid="uid://d0lhum8uvestn" path="res://assets/sprites/enemies/mushies/StumpyGreenTats.png" id="3_x1vv5"]
 [ext_resource type="PackedScene" uid="uid://bl2gkr0uoero3" path="res://scenes/killzone.tscn" id="4_8ebgi"]
+[ext_resource type="Texture2D" uid="uid://varq62f6w6tp" path="res://assets/sprites/impacts/black-white-smoke-sheet.png" id="4_yvj7b"]
+[ext_resource type="AudioStream" uid="uid://bsekfc6xy5hoi" path="res://assets/sounds/combat/death-explode.wav" id="6_i67lv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ya0od"]
-atlas = ExtResource("2_ip345")
-region = Rect2(0, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_n551d"]
+atlas = ExtResource("4_yvj7b")
+region = Rect2(1588, 0, 1588, 1689)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtjsj"]
-atlas = ExtResource("2_ip345")
-region = Rect2(24, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_21tm2"]
+atlas = ExtResource("4_yvj7b")
+region = Rect2(0, 0, 1588, 1689)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dl5wr"]
-atlas = ExtResource("2_ip345")
-region = Rect2(48, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hsec"]
+atlas = ExtResource("4_yvj7b")
+region = Rect2(0, 1689, 1588, 1689)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_f0sh6"]
-atlas = ExtResource("2_ip345")
-region = Rect2(72, 24, 24, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_55fat"]
+atlas = ExtResource("4_yvj7b")
+region = Rect2(1588, 1689, 1588, 1689)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0htcr"]
 atlas = ExtResource("3_x1vv5")
@@ -29,20 +31,26 @@ region = Rect2(0, 0, 798, 924)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ya0od")
+"texture": ExtResource("2_px8ba")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gtjsj")
+"texture": ExtResource("2_px8ba")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dl5wr")
+"texture": SubResource("AtlasTexture_n551d")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f0sh6")
+"texture": SubResource("AtlasTexture_21tm2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hsec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55fat")
 }],
-"loop": true,
-"name": &"default",
-"speed": 10.0
+"loop": false,
+"name": &"dying",
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -57,23 +65,44 @@ animations = [{
 radius = 14.4605
 height = 28.921
 
-[node name="RedMushyTats" type="Node2D"]
+[sub_resource type="Animation" id="Animation_1ffgb"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeathNoise:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_25f82"]
+_data = {
+"death": SubResource("Animation_1ffgb")
+}
+
+[node name="RedMushyTats" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.05, 0.05)
-script = ExtResource("1_1id72")
+script = ExtResource("1_oykws")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ev3ay")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.470781
 
 [node name="Killzone" parent="." instance=ExtResource("4_8ebgi")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 10)
 scale = Vector2(15.5048, 23.9272)
 shape = SubResource("CapsuleShape2D_agq02")
+disabled = true
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -84,3 +113,21 @@ target_position = Vector2(10, 0)
 position = Vector2(0, -6)
 scale = Vector2(29, 29)
 target_position = Vector2(-10, 0)
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(80, 140, 260, 120, 300, 20, 140, -380, -100, -380, -340, 60, -280, 120, -120, 160, -120, 340, 0, 380, 120, 340)
+
+[node name="DeathNoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_i67lv")
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_25f82")
+}
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

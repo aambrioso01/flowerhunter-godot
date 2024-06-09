@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cppu0hiem7h7l"]
+[gd_scene load_steps=30 format=3 uid="uid://cppu0hiem7h7l"]
 
 [ext_resource type="Script" path="res://scripts/game/game_manager.gd" id="1_463xa"]
 [ext_resource type="FontFile" uid="uid://do40wacy5fggs" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_1l5s8"]
@@ -16,8 +16,9 @@
 [ext_resource type="FontFile" uid="uid://bannjgrw33skd" path="res://assets/fonts/PixelOperator8.ttf" id="13_q3bwu"]
 [ext_resource type="PackedScene" uid="uid://be73geugn1jud" path="res://scenes/pickups/gem.tscn" id="15_5rdop"]
 [ext_resource type="PackedScene" uid="uid://xrqsyynlctpk" path="res://scenes/levels/transitions/game_over.tscn" id="16_uvi13"]
+[ext_resource type="PackedScene" uid="uid://bk2nhjjtjn6ym" path="res://scenes/pickups/strawberry.tscn" id="18_kxe24"]
 [ext_resource type="PackedScene" uid="uid://t8klv6hmigbo" path="res://scenes/obstacles/spikes.tscn" id="19_mk6ix"]
-[ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/platforms/portal.tscn" id="20_o0i86"]
+[ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/levels/transitions/portal.tscn" id="20_o0i86"]
 [ext_resource type="PackedScene" uid="uid://w18jutm6focd" path="res://scenes/levels/transitions/finish_level.tscn" id="21_sd0n4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utrwg"]
@@ -2216,7 +2217,7 @@ zoom = Vector2(4, 4)
 limit_bottom = 140
 position_smoothing_enabled = true
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 scale = Vector2(0.04, 0.04)
 tile_set = SubResource("TileSet_c553o")
 format = 2
@@ -2230,7 +2231,7 @@ scale = Vector2(0.5, 0.5)
 tile_set = SubResource("TileSet_c553o")
 format = 2
 layer_0/name = "Background"
-layer_0/tile_data = PackedInt32Array(-1, 65542, 1, -65536, 6, 1, 65535, 65542, 1, 0, 6, 1, -65538, 6, 1, -65537, 65542, 1, -2, 6, 1, 65534, 6, 1, -131072, 6, 1, -131071, 65542, 1, -65535, 65542, 1, 1, 65542, 1, -131070, 6, 1, -65534, 6, 1, 2, 6, 1, -131075, 65542, 1, -65539, 65542, 1, -3, 65542, 1, 65533, 65542, 1, -131074, 6, 1, -131073, 65542, 1, -196608, 6, 1, -196607, 65542, 1, -196606, 6, 1)
+layer_0/tile_data = PackedInt32Array(-1, 65542, 1, -65536, 6, 1, 65535, 65542, 1, 0, 6, 1, -65538, 6, 1, -65537, 65542, 1, -2, 6, 1, 65534, 6, 1, -131072, 6, 1, -131071, 65542, 1, -65535, 65542, 1, 1, 65542, 1, -131074, 6, 1, -131073, 65542, 1, -196608, 6, 1, -196607, 65542, 1, 2, 6, 1, -65534, 6, 1, -131070, 6, 1, -196606, 6, 1, 65533, 65542, 1, -3, 65542, 1, -65539, 65542, 1, -131075, 65542, 1)
 layer_1/name = "Midground"
 layer_1/tile_data = PackedInt32Array()
 
@@ -2298,6 +2299,24 @@ next_level = ExtResource("16_uvi13")
 shape = SubResource("CircleShape2D_mxfpa")
 
 [node name="Berries" type="Node" parent="."]
+
+[node name="Strawberry" parent="Berries" instance=ExtResource("18_kxe24")]
+position = Vector2(-49, 10)
+
+[node name="Strawberry2" parent="Berries" instance=ExtResource("18_kxe24")]
+position = Vector2(-31, 10)
+
+[node name="Strawberry3" parent="Berries" instance=ExtResource("18_kxe24")]
+position = Vector2(-69, 10)
+
+[node name="Strawberry4" parent="Berries" instance=ExtResource("18_kxe24")]
+position = Vector2(10, 10)
+
+[node name="Strawberry5" parent="Berries" instance=ExtResource("18_kxe24")]
+position = Vector2(28, 10)
+
+[node name="Strawberry6" parent="Berries" instance=ExtResource("18_kxe24")]
+position = Vector2(-10, 10)
 
 [node name="Spikes" type="Node" parent="."]
 

@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="4_rubk0"]
 [ext_resource type="Texture2D" uid="uid://5f1sdwksg6fg" path="res://assets/sprites/brackeys/world_tileset.png" id="5_ccqbq"]
 [ext_resource type="PackedScene" uid="uid://bl2gkr0uoero3" path="res://scenes/killzone.tscn" id="6_16bus"]
-[ext_resource type="PackedScene" uid="uid://cec7o4fa6jqhg" path="res://scenes/pickups/coin.tscn" id="7_tg5ha"]
+[ext_resource type="PackedScene" uid="uid://be73geugn1jud" path="res://scenes/pickups/gem.tscn" id="7_tg5ha"]
 [ext_resource type="PackedScene" uid="uid://dgrkh4ci7l17c" path="res://scenes/platforms/zendovia_grass.tscn" id="8_v8epq"]
 [ext_resource type="FontFile" uid="uid://bannjgrw33skd" path="res://assets/fonts/PixelOperator8.ttf" id="9_u812l"]
 [ext_resource type="PackedScene" uid="uid://dgkmnis2fe61o" path="res://scenes/enemies/red_mushy_tats.tscn" id="10_srqvu"]

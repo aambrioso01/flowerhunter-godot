@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://t71q84m0c6vt"]
+[gd_scene load_steps=8 format=3 uid="uid://t71q84m0c6vt"]
 
 [ext_resource type="Script" path="res://scripts/pickups/heart_gem.gd" id="1_woj2y"]
 [ext_resource type="Texture2D" uid="uid://cpyvfdou1ly4j" path="res://assets/sprites/pickups/heart_gem.png" id="2_02q0u"]
@@ -39,22 +39,19 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_yw603"]
-radius = 5.09902
-
 [node name="HeartGem" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_woj2y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 2)
-scale = Vector2(0.02, 0.02)
+position = Vector2(3, 2)
+scale = Vector2(0.05, 0.05)
 sprite_frames = SubResource("SpriteFrames_01ih1")
 autoplay = "default"
 frame = 2
 frame_progress = 0.761135
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_yw603")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 11, 10, 3, 14, -3, 14, -12, 8, -14, 2, -12, 0, -9, -2, -13, -7, -15, -12, -14, -15, -6, -13, 2)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

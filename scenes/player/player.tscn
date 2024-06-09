@@ -1,9 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://d2g2j4p1llby6"]
+[gd_scene load_steps=29 format=3 uid="uid://d2g2j4p1llby6"]
 
 [ext_resource type="Texture2D" uid="uid://d4gnxkmq0pr2r" path="res://assets/sprites/player/zed/Zed_idle_2.PNG" id="1_k1gfn"]
 [ext_resource type="Texture2D" uid="uid://bsl4ah1hkxfyc" path="res://assets/sprites/player/zed/puff.png" id="4_7isy4"]
 [ext_resource type="Texture2D" uid="uid://ceixq84p2l82p" path="res://assets/sprites/player/zed/Zed_idle_sheet.PNG" id="4_rte8n"]
 [ext_resource type="Texture2D" uid="uid://co0lovce1vf7j" path="res://assets/sprites/player/zed/Zed_jump_happy_sheet.PNG" id="5_lxlfi"]
+[ext_resource type="PackedScene" uid="uid://da2tffaqrlvgf" path="res://scenes/weapons/sword.tscn" id="5_vgyhw"]
+[ext_resource type="PackedScene" uid="uid://b0itr6co7lia" path="res://scenes/weapons/water_pistol.tscn" id="6_jmboi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_culm1"]
 atlas = ExtResource("1_k1gfn")
@@ -161,36 +163,52 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump",
-"speed": 8.0
+"speed": 7.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8myds"]
 radius = 175.0
 
 [node name="Player" type="CharacterBody2D"]
-z_index = 1
+z_index = 10
 scale = Vector2(0.04, 0.04)
 collision_layer = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Marker2D"]
+z_index = 10
 position = Vector2(-1, -9)
 sprite_frames = SubResource("SpriteFrames_f3q6h")
 animation = &"new_idle"
 autoplay = "new_zed"
 flip_h = true
 
-[node name="AnimatedPuff" type="AnimatedSprite2D" parent="AnimatedSprite2D"]
+[node name="AnimatedPuff" type="AnimatedSprite2D" parent="Marker2D/AnimatedSprite2D"]
 visible = false
-position = Vector2(0, 200)
+position = Vector2(1, 284)
 rotation = -1.57313
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_ib13f")
 animation = &"jump"
+frame = 2
+frame_progress = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.90735e-06, 50)
-shape = SubResource("CircleShape2D_8myds")
+[node name="Sword" parent="Marker2D" instance=ExtResource("5_vgyhw")]
+visible = false
+z_index = 1
+position = Vector2(450, -50)
+rotation = 0.71114
+
+[node name="WaterPistol" parent="Marker2D" instance=ExtResource("6_jmboi")]
+z_index = 1
+position = Vector2(375, 75)
+scale = Vector2(-1, 1)
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.90735e-06, 50)
+shape = SubResource("CircleShape2D_8myds")
