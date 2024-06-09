@@ -2217,7 +2217,7 @@ zoom = Vector2(4, 4)
 limit_bottom = 140
 position_smoothing_enabled = true
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["walls"]]
 scale = Vector2(0.04, 0.04)
 tile_set = SubResource("TileSet_c553o")
 format = 2

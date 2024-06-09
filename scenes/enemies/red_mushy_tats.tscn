@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dgkmnis2fe61o"]
+[gd_scene load_steps=13 format=3 uid="uid://dgkmnis2fe61o"]
 
 [ext_resource type="Script" path="res://scripts/enemies/chomper.gd" id="1_1id72"]
 [ext_resource type="Texture2D" uid="uid://bpipj4fwbqbk0" path="res://assets/sprites/brackeys/slime_purple.png" id="2_ip345"]
@@ -57,7 +57,11 @@ animations = [{
 radius = 14.4605
 height = 28.921
 
-[node name="RedMushyTats" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fobey"]
+radius = 9.65517
+height = 27.8422
+
+[node name="RedMushyTats" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.05, 0.05)
 script = ExtResource("1_1id72")
 
@@ -69,11 +73,13 @@ autoplay = "new_animation"
 frame_progress = 0.470781
 
 [node name="Killzone" parent="." instance=ExtResource("4_8ebgi")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 10)
 scale = Vector2(15.5048, 23.9272)
 shape = SubResource("CapsuleShape2D_agq02")
+disabled = true
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
@@ -84,3 +90,8 @@ target_position = Vector2(10, 0)
 position = Vector2(0, -6)
 scale = Vector2(29, 29)
 target_position = Vector2(-10, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(0, -20)
+scale = Vector2(29, 25.86)
+shape = SubResource("CapsuleShape2D_fobey")
