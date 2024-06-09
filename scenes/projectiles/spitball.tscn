@@ -1,15 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://c2cwpvlho8462"]
+[gd_scene load_steps=6 format=3 uid="uid://c2cwpvlho8462"]
 
 [ext_resource type="Script" path="res://scripts/projectiles/spitball.gd" id="1_vtwkf"]
 [ext_resource type="Texture2D" uid="uid://cytox40dttvjf" path="res://assets/sprites/projectiles/spitball/spitball (1).png" id="1_w5ki3"]
+[ext_resource type="PackedScene" uid="uid://bw5321vckrbfv" path="res://scenes/projectiles/impact.tscn" id="2_8lrk6"]
 [ext_resource type="AudioStream" uid="uid://dg0a50rkl4jiq" path="res://assets/sounds/water-splash-80537.mp3" id="3_ycgt0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6i0ac"]
+radius = 8.26707
 
 [node name="Spitball" type="Area2D"]
 script = ExtResource("1_vtwkf")
+Impact = ExtResource("2_8lrk6")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-7, -2)
 scale = Vector2(11.1816, 11.1816)
 shape = SubResource("CircleShape2D_6i0ac")
 
@@ -25,5 +29,4 @@ volume_db = -10.0
 autoplay = true
 bus = &"SFX"
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

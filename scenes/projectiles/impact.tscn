@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw5321vckrbfv"]
+
+[ext_resource type="Texture2D" uid="uid://gr3kstr500rp" path="res://assets/sprites/projectiles/frame (1).png" id="1_qdi72"]
+[ext_resource type="Texture2D" uid="uid://5liwhjlvsgan" path="res://assets/sprites/projectiles/frame (2).png" id="2_eb46t"]
+[ext_resource type="Script" path="res://scripts/projectiles/impact_timer.gd" id="3_td3cb"]
+[ext_resource type="AudioStream" uid="uid://dqbpbkj3l0sm5" path="res://assets/sounds/combat/punch-41105.mp3" id="4_pj1sn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j44ry"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qdi72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eb46t")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Impact" type="Node2D"]
+script = ExtResource("3_td3cb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_j44ry")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="AnimatedSprite2D"]
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_pj1sn")
+autoplay = true
+bus = &"SFX"
+
+[connection signal="timeout" from="AnimatedSprite2D/Timer" to="." method="_on_timer_timeout"]

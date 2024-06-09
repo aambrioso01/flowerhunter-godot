@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/pickups/gem.gd" id="1_hj12i"]
 [ext_resource type="Texture2D" uid="uid://bdwjw3tv1f155" path="res://assets/sprites/brackeys/coin.png" id="2_l1n7o"]
-[ext_resource type="AudioStream" uid="uid://2rjp3m5femkb" path="res://assets/sounds/coin.wav" id="3_2cvlr"]
 [ext_resource type="Texture2D" uid="uid://bjxvix1otbq8u" path="res://assets/sprites/pickups/Gem_sheet.PNG" id="3_rt0j5"]
+[ext_resource type="AudioStream" uid="uid://2rjp3m5femkb" path="res://assets/sounds/pickups/coin.wav" id="4_guvna"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6a8e"]
 atlas = ExtResource("2_l1n7o")
@@ -247,7 +247,7 @@ frame_progress = 0.997653
 shape = SubResource("CapsuleShape2D_kvih1")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_2cvlr")
+stream = ExtResource("4_guvna")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

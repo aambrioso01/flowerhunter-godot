@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b80h3rtclqqct"
-path="res://.godot/imported/power_up.wav-8349ffe570559470036ebff4b80f7fc0.sample"
+path="res://.godot/imported/power_up.wav-becff9d88c512a03bf0daec898428c2d.sample"
 
 [deps]
 
-source_file="res://assets/sounds/power_up.wav"
-dest_files=["res://.godot/imported/power_up.wav-8349ffe570559470036ebff4b80f7fc0.sample"]
+source_file="res://assets/sounds/pickups/power_up.wav"
+dest_files=["res://.godot/imported/power_up.wav-becff9d88c512a03bf0daec898428c2d.sample"]
 
 [params]
 

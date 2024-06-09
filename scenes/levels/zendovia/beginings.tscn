@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dpiy3i3iyg32h"]
+[gd_scene load_steps=31 format=3 uid="uid://dpiy3i3iyg32h"]
 
 [ext_resource type="PackedScene" uid="uid://cr6pue5qum3h2" path="res://scenes/menus/game_manager.tscn" id="1_13eo7"]
 [ext_resource type="PackedScene" uid="uid://dgevyvicj58gx" path="res://scenes/menus/hud.tscn" id="2_rquwm"]
@@ -14,9 +14,6 @@
 [ext_resource type="FontFile" uid="uid://bannjgrw33skd" path="res://assets/fonts/PixelOperator8.ttf" id="14_sfhus"]
 [ext_resource type="PackedScene" uid="uid://dgkmnis2fe61o" path="res://scenes/enemies/red_mushy_tats.tscn" id="15_03ryg"]
 [ext_resource type="PackedScene" uid="uid://t71q84m0c6vt" path="res://scenes/pickups/heart_gem.tscn" id="16_8qxxl"]
-[ext_resource type="Script" path="res://scripts/player/CanvasLayerUI.gd" id="17_kly4j"]
-[ext_resource type="PackedScene" uid="uid://r5nb8btr42r2" path="res://scenes/player/joystick.tscn" id="18_kd88i"]
-[ext_resource type="PackedScene" uid="uid://dbnxijr3ixyj5" path="res://scenes/player/touch_screen_button.tscn" id="19_dx7u1"]
 [ext_resource type="PackedScene" uid="uid://t8klv6hmigbo" path="res://scenes/obstacles/spikes.tscn" id="20_o0w4s"]
 [ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/platforms/portal.tscn" id="21_rl318"]
 [ext_resource type="PackedScene" uid="uid://w18jutm6focd" path="res://scenes/levels/transitions/finish_level.tscn" id="22_pnbtj"]
@@ -2303,18 +2300,6 @@ position = Vector2(-192, -18)
 
 [node name="HeartGem" parent="Powerups" instance=ExtResource("16_8qxxl")]
 position = Vector2(-51, -79)
-
-[node name="TouchPad" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("17_kly4j")
-
-[node name="Joystick" parent="TouchPad" instance=ExtResource("18_kd88i")]
-position = Vector2(150, 550)
-scale = Vector2(1.3424, 1.3424)
-
-[node name="TouchScreenButton" parent="TouchPad" instance=ExtResource("19_dx7u1")]
-position = Vector2(1800, 700)
-scale = Vector2(1.37536, 1.37536)
 
 [node name="Spikes" type="Node2D" parent="."]
 

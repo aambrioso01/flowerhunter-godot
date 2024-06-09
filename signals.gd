@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 # Player attacks
 signal basic_attack
@@ -10,3 +10,6 @@ signal berry_collected
 # Health
 signal lost_life
 signal berry_heal
+
+# Enemies
+signal enemy_damaged
