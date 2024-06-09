@@ -1,28 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgkmnis2fe61o"]
+[gd_scene load_steps=16 format=3 uid="uid://dgkmnis2fe61o"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mushy.gd" id="1_oykws"]
-[ext_resource type="Texture2D" uid="uid://bpipj4fwbqbk0" path="res://assets/sprites/brackeys/slime_purple.png" id="2_ip345"]
 [ext_resource type="Texture2D" uid="uid://3ogra07kneh7" path="res://assets/sprites/enemies/mushies/BulbyBlueTats.png" id="2_px8ba"]
 [ext_resource type="Texture2D" uid="uid://d0lhum8uvestn" path="res://assets/sprites/enemies/mushies/StumpyGreenTats.png" id="3_x1vv5"]
 [ext_resource type="PackedScene" uid="uid://bl2gkr0uoero3" path="res://scenes/killzone.tscn" id="4_8ebgi"]
 [ext_resource type="Texture2D" uid="uid://varq62f6w6tp" path="res://assets/sprites/impacts/black-white-smoke-sheet.png" id="4_yvj7b"]
 [ext_resource type="AudioStream" uid="uid://bsekfc6xy5hoi" path="res://assets/sounds/combat/death-explode.wav" id="6_i67lv"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ya0od"]
-atlas = ExtResource("2_ip345")
-region = Rect2(0, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gtjsj"]
-atlas = ExtResource("2_ip345")
-region = Rect2(24, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dl5wr"]
-atlas = ExtResource("2_ip345")
-region = Rect2(48, 24, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f0sh6"]
-atlas = ExtResource("2_ip345")
-region = Rect2(72, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n551d"]
 atlas = ExtResource("4_yvj7b")
@@ -46,23 +29,6 @@ region = Rect2(0, 0, 798, 924)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ev3ay"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ya0od")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gtjsj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dl5wr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f0sh6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_px8ba")
@@ -126,7 +92,7 @@ script = ExtResource("1_oykws")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_ev3ay")
-animation = &"dying"
+animation = &"new_animation"
 autoplay = "new_animation"
 
 [node name="Killzone" parent="." instance=ExtResource("4_8ebgi")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pagjg3u3ku2r"
-path="res://.godot/imported/Portal_sheet.PNG-149238504a132a6086170de5dcaf8fc9.ctex"
+uid="uid://cmx4uihtkkybl"
+path="res://.godot/imported/Magic_grass_platform_sheet.PNG-932e1874cedb7068c2e4a2f41fd35090.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/platforms/Portal_sheet.PNG"
-dest_files=["res://.godot/imported/Portal_sheet.PNG-149238504a132a6086170de5dcaf8fc9.ctex"]
+source_file="res://assets/sprites/platforms/Magic_grass_platform_sheet.PNG"
+dest_files=["res://.godot/imported/Magic_grass_platform_sheet.PNG-932e1874cedb7068c2e4a2f41fd35090.ctex"]
 
 [params]
 

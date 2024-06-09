@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://xrqsyynlctpk" path="res://scenes/levels/transitions/game_over.tscn" id="16_uvi13"]
 [ext_resource type="PackedScene" uid="uid://bk2nhjjtjn6ym" path="res://scenes/pickups/strawberry.tscn" id="18_kxe24"]
 [ext_resource type="PackedScene" uid="uid://t8klv6hmigbo" path="res://scenes/obstacles/spikes.tscn" id="19_mk6ix"]
-[ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/platforms/portal.tscn" id="20_o0i86"]
+[ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/levels/transitions/portal.tscn" id="20_o0i86"]
 [ext_resource type="PackedScene" uid="uid://w18jutm6focd" path="res://scenes/levels/transitions/finish_level.tscn" id="21_sd0n4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utrwg"]

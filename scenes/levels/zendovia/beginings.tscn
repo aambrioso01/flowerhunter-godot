@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dgkmnis2fe61o" path="res://scenes/enemies/red_mushy_tats.tscn" id="15_03ryg"]
 [ext_resource type="PackedScene" uid="uid://t71q84m0c6vt" path="res://scenes/pickups/heart_gem.tscn" id="16_8qxxl"]
 [ext_resource type="PackedScene" uid="uid://t8klv6hmigbo" path="res://scenes/obstacles/spikes.tscn" id="20_o0w4s"]
-[ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/platforms/portal.tscn" id="21_rl318"]
+[ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/levels/transitions/portal.tscn" id="21_rl318"]
 [ext_resource type="PackedScene" uid="uid://w18jutm6focd" path="res://scenes/levels/transitions/finish_level.tscn" id="22_pnbtj"]
 [ext_resource type="PackedScene" uid="uid://cl32wyxfiarof" path="res://scenes/levels/zendovia/portaling.tscn" id="23_4av64"]
 [ext_resource type="PackedScene" uid="uid://be73geugn1jud" path="res://scenes/pickups/gem.tscn" id="23_ycywa"]
