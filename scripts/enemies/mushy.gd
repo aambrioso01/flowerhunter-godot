@@ -38,3 +38,9 @@ func die():
 
 func _on_death_timer_timeout():
 	queue_free()
+
+#func _on_area_2d_body_entered(body):
+	#print(body)
+	#if body.is_in_group("player"):
+		#print("collid with player")
+		#Signals.player_damaged.emit(50)

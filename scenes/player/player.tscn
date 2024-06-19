@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://d2g2j4p1llby6"]
+[gd_scene load_steps=30 format=3 uid="uid://d2g2j4p1llby6"]
 
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_7sn26"]
 [ext_resource type="Texture2D" uid="uid://d4gnxkmq0pr2r" path="res://assets/sprites/player/zed/Zed_idle_2.PNG" id="1_k1gfn"]
 [ext_resource type="Texture2D" uid="uid://bsl4ah1hkxfyc" path="res://assets/sprites/player/zed/puff.png" id="4_7isy4"]
 [ext_resource type="Texture2D" uid="uid://ceixq84p2l82p" path="res://assets/sprites/player/zed/Zed_idle_sheet.PNG" id="4_rte8n"]
@@ -169,10 +170,11 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_8myds"]
 radius = 175.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 10
 scale = Vector2(0.04, 0.04)
 collision_layer = 2
+script = ExtResource("1_7sn26")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 
@@ -210,5 +212,22 @@ wait_time = 0.2
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.90735e-06, 50)
+position = Vector2(0, 50)
+scale = Vector2(1.2, 1.1)
 shape = SubResource("CircleShape2D_8myds")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+scale = Vector2(1.2, 1.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 41.6667)
+scale = Vector2(1.06792, 1.02616)
+shape = SubResource("CircleShape2D_8myds")
+disabled = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

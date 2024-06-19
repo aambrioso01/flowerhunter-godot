@@ -80,9 +80,8 @@ scale = Vector2(0.1, 0.1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_03yrr")
-animation = &"version2"
-autoplay = "version2"
-frame_progress = 0.402781
+autoplay = "default"
+frame_progress = 0.267398
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7.5, -25)

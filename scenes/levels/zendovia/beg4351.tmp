@@ -1,8 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpiy3i3iyg32h"]
+[gd_scene load_steps=31 format=3 uid="uid://dpiy3i3iyg32h"]
 
 [ext_resource type="PackedScene" uid="uid://cr6pue5qum3h2" path="res://scenes/menus/game_manager.tscn" id="1_13eo7"]
 [ext_resource type="PackedScene" uid="uid://dgevyvicj58gx" path="res://scenes/menus/hud.tscn" id="2_rquwm"]
 [ext_resource type="PackedScene" uid="uid://d2g2j4p1llby6" path="res://scenes/player/player.tscn" id="3_kaiyr"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="4_sujc8"]
 [ext_resource type="Texture2D" uid="uid://5f1sdwksg6fg" path="res://assets/sprites/brackeys/world_tileset.png" id="5_w8e00"]
 [ext_resource type="Texture2D" uid="uid://cve1sm5lsuctg" path="res://black underground.png" id="6_iuokp"]
 [ext_resource type="Texture2D" uid="uid://duoeruyjx23oo" path="res://assets/sprites/tiles/zendovia/underground.PNG" id="7_fbg6d"]
@@ -2194,6 +2195,7 @@ sources/8 = SubResource("TileSetAtlasSource_d8mvp")
 [node name="Player" parent="." instance=ExtResource("3_kaiyr")]
 unique_name_in_owner = true
 position = Vector2(-13, -23)
+script = ExtResource("4_sujc8")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -5)

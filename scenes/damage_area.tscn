@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxovqlgm4imlb"]
+
+[ext_resource type="Script" path="res://scripts/enemies/damage_area.gd" id="1_w5ac5"]
+
+[node name="DamageArea" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_w5ac5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

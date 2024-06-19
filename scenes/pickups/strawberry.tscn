@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://bk2nhjjtjn6ym"]
 
-[ext_resource type="Script" path="res://scenes/pickups/strawberry.gd" id="1_lfo5m"]
+[ext_resource type="Script" path="res://scripts/pickups/strawberry.gd" id="1_lfo5m"]
 [ext_resource type="Texture2D" uid="uid://bdwjw3tv1f155" path="res://assets/sprites/brackeys/coin.png" id="2_3l5y3"]
 [ext_resource type="Texture2D" uid="uid://jjbgk01mij8y" path="res://assets/sprites/pickups/Strawberry sheet.PNG" id="3_qr8x2"]
 [ext_resource type="AudioStream" uid="uid://dv0xawdcmame2" path="res://assets/sounds/crunch.mp3" id="4_y2c21"]

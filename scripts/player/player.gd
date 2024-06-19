@@ -4,10 +4,12 @@ const SPEED = 120.0
 const JUMP_VELOCITY = -330.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var jumps
-var lowJumpMultiplier
-var fallMultiplier
-var sprintMultiplier
+
+var jumps = 1
+var lowJumpMultiplier = -40
+var fallMultiplier = -3	
+var sprintMultiplier = 1
+var health = 100
 
 var idle_anim = "new_idle"
 var jump_anim = "new_jump"
@@ -16,13 +18,11 @@ var jump_anim = "new_jump"
 @onready var animated_sprite = $Marker2D/AnimatedSprite2D
 @onready var animated_puff = $Marker2D/AnimatedSprite2D/AnimatedPuff
 @onready var coyote_timer = $CoyoteTimer
+@onready var death_timer = $DeathTimer
 
 func _ready():
-	jumps = 1
-	lowJumpMultiplier = -40
-	fallMultiplier = -3	
-	sprintMultiplier = 1
-
+	# Listen for damage taken
+	Signals.player_damaged.connect(on_player_damaged)
 
 func _physics_process(delta):		
 	# Player heals
@@ -110,3 +110,37 @@ func jump(jumps_remaining):
 			animated_puff.play("jump")
 	else:
 		print("cant jump")
+
+# Player took damage and loses health
+func on_player_damaged(amount):
+	print("Player took damage")
+	health -= amount
+	if health <= 0:
+		die()
+
+# Player is out of health
+func die():
+# 	# play death animation
+# 	death_timer.start()
+# 	animated_sprite.play("dying")
+# 	animation_player.play("death")
+	print("player died")
+	
+	# Slow-mo death
+	Engine.time_scale = 0.20
+	# Remove collison body
+	get_node("CollisionShape2D").queue_free()
+	# Wait time it takes to die
+	death_timer.start()
+
+func _on_death_timer_timeout():
+	if SaveManager.lives >= 0:
+		# Player has lost a life
+		Signals.lost_life.emit()
+		# Reset time to normal speed after death
+		Engine.time_scale = 1
+		# Reload
+		get_tree().reload_current_scene()
+	if SaveManager.lives < 0:
+		# Player has died
+		GameManager.game_over()

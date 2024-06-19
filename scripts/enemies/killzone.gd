@@ -4,16 +4,12 @@ extends Area2D
 
 # Player has died
 func _on_body_entered(body):
-	if body.is_in_group("player"):
-		print("player entered enemy")
-		Signals.player_damaged.emit(50)
-		
-	# # Slow-mo death
-	# Engine.time_scale = 0.20
-	# # Remove collison body
-	# body.get_node("CollisionShape2D").queue_free()
-	# # Wait time it takes to die
-	# timer.start()
+	# Slow-mo death
+	Engine.time_scale = 0.20
+	# Remove collison body
+	body.get_node("CollisionShape2D").queue_free()
+	# Wait time it takes to die
+	timer.start()
 
 func _on_timer_timeout():
 	if SaveManager.lives >= 0:
