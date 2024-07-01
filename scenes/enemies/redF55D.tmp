@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dgkmnis2fe61o"]
+[gd_scene load_steps=18 format=3 uid="uid://dgkmnis2fe61o"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mushy.gd" id="1_oykws"]
 [ext_resource type="Texture2D" uid="uid://dcjnk2fer4oiq" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_Idle_sheet.PNG" id="3_82bbd"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bfsqtsmcf2yqp" path="res://assets/sprites/enemies/mushies/tat_mushy/Main_puff_cloud.PNG" id="3_w340o"]
 [ext_resource type="Texture2D" uid="uid://bj0mwoac5wh1" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_swipe_sheet.PNG" id="4_t33d3"]
 [ext_resource type="AudioStream" uid="uid://bsekfc6xy5hoi" path="res://assets/sounds/combat/death-explode.wav" id="6_i67lv"]
-[ext_resource type="Texture2D" uid="uid://d4hbf1kylqw1i" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_stomp_sheet.PNG" id="6_lgnep"]
 [ext_resource type="PackedScene" uid="uid://bxovqlgm4imlb" path="res://scenes/damage_area.tscn" id="6_n2mdu"]
 [ext_resource type="PackedScene" uid="uid://dk0461di27tmg" path="res://agro_zone.tscn" id="7_hsk4c"]
 [ext_resource type="AudioStream" uid="uid://dgf38bhondud0" path="res://assets/sounds/combat/swipe-whoosh.wav" id="11_8ua0q"]
@@ -587,6 +586,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ja7xy"]
 resource_name = "stomp"
+length = 0.52
+loop_mode = 2
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -595,10 +596,10 @@ tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [ExtResource("6_lgnep")]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -631,10 +632,10 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -643,10 +644,10 @@ tracks/4/path = NodePath("DamageArea/Hitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
+"times": PackedFloat32Array(0, 0.49, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [true, true, false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -655,43 +656,15 @@ tracks/5/path = NodePath("DamageArea/Hitbox:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.6),
+"times": PackedFloat32Array(0, 0.49, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true, false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("DamageArea/Hitbox:polygon")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(57.1429, 76.1905, 123.81, 57.1429, 142.857, -9.52381, 114.286, -57.1429, 57.1429, -95.2381, -114.286, -95.2381, -171.429, -19.0476, -161.905, 38.0952, -104.762, 66.6667, -28.5714, 85.7143)]
-}
-
-[sub_resource type="Animation" id="Animation_yeqqn"]
-resource_name = "dash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 1,
-"values": []
+"values": [false, false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_25f82"]
 _data = {
 "RESET": SubResource("Animation_3qqte"),
-"dash": SubResource("Animation_yeqqn"),
 "dying": SubResource("Animation_21k8m"),
 "idle": SubResource("Animation_j8mln"),
 "punch": SubResource("Animation_cgskc"),
@@ -700,7 +673,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpsbe"]
-size = Vector2(305.088, 5.14216)
+size = Vector2(241.351, 4.70453)
 
 [node name="RedMushyTats" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.1, 0.1)
@@ -733,15 +706,15 @@ polygon = PackedVector2Array(72.5624, 108.844, 99.7732, 63.4921, 108.844, 9.0703
 
 [node name="Hitbox" type="CollisionPolygon2D" parent="DamageArea"]
 visible = false
-position = Vector2(-20, 80)
 scale = Vector2(1.05, 1.05)
 polygon = PackedVector2Array(47.6191, 63.4921, 123.81, 57.1429, 142.857, -9.52381, 114.286, -57.1429, 57.1429, -95.2381, 0, -190.476, -57.1429, -171.429, -133.333, -95.2381, -171.429, -19.0476, -161.905, 38.0952, -95.2381, 63.4921, 15.873, 63.4921)
 disabled = true
 
 [node name="AgroZone" parent="." instance=ExtResource("7_hsk4c")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroZone"]
-position = Vector2(-10, -40)
+position = Vector2(-20.0012, -25)
 scale = Vector2(12.6347, -91.4012)
 shape = SubResource("RectangleShape2D_vpsbe")
 
@@ -754,6 +727,3 @@ bus = &"SFX"
 
 [node name="Swipe" type="AudioStreamPlayer2D" parent="SFX"]
 stream = ExtResource("11_8ua0q")
-
-[node name="AttackTimer" type="Timer" parent="."]
-one_shot = true

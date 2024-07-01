@@ -11,6 +11,3 @@ signal berry_collected
 signal player_damaged
 signal lost_life
 signal berry_heal
-
-# Enemies
-signal enemy_damaged

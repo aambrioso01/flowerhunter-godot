@@ -108,12 +108,9 @@ func jump(jumps_remaining):
 	if jumps_remaining > 0:
 			velocity.y = JUMP_VELOCITY
 			animated_puff.play("jump")
-	else:
-		print("cant jump")
 
 # Player took damage and loses health
 func on_player_damaged(amount):
-	print("Player took damage")
 	health -= amount
 	if health <= 0:
 		die()
@@ -124,7 +121,6 @@ func die():
 # 	death_timer.start()
 # 	animated_sprite.play("dying")
 # 	animation_player.play("death")
-	print("player died")
 	
 	# Slow-mo death
 	Engine.time_scale = 0.20

@@ -8,9 +8,12 @@ var damage = 25
 func _physics_process(delta):
 	position += transform.x * speed * delta
 
+func damage_enemy(enemy, damage_amount):
+	enemy.emit_signal("enemy_damaged", damage_amount)
+
 func _on_body_entered(body):
 	if body.is_in_group("enemy"):
-		Signals.enemy_damaged.emit(damage)
+		damage_enemy(body, damage)
 		
 	# Impact
 	var impact = Impact.instantiate()
