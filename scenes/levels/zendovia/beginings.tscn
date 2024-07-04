@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dpiy3i3iyg32h"]
+[gd_scene load_steps=31 format=3 uid="uid://dpiy3i3iyg32h"]
 
 [ext_resource type="PackedScene" uid="uid://cr6pue5qum3h2" path="res://scenes/menus/game_manager.tscn" id="1_13eo7"]
 [ext_resource type="PackedScene" uid="uid://dgevyvicj58gx" path="res://scenes/menus/hud.tscn" id="2_rquwm"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://t71q84m0c6vt" path="res://scenes/pickups/heart_gem.tscn" id="16_8qxxl"]
 [ext_resource type="PackedScene" uid="uid://t8klv6hmigbo" path="res://scenes/obstacles/spikes.tscn" id="20_o0w4s"]
 [ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/levels/transitions/portal.tscn" id="21_rl318"]
+[ext_resource type="PackedScene" uid="uid://d305svh5o87m" path="res://scenes/pickups/cake.tscn" id="21_xw50w"]
 [ext_resource type="PackedScene" uid="uid://w18jutm6focd" path="res://scenes/levels/transitions/finish_level.tscn" id="22_pnbtj"]
 [ext_resource type="PackedScene" uid="uid://cl32wyxfiarof" path="res://scenes/levels/zendovia/portaling.tscn" id="23_4av64"]
 [ext_resource type="PackedScene" uid="uid://be73geugn1jud" path="res://scenes/pickups/gem.tscn" id="23_ycywa"]
@@ -2173,7 +2174,8 @@ texture_region_size = Vector2i(500, 500)
 
 [sub_resource type="TileSet" id="TileSet_c553o"]
 tile_size = Vector2i(500, 500)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_utrwg")
 sources/1 = SubResource("TileSetAtlasSource_td0it")
 sources/2 = SubResource("TileSetAtlasSource_flkmn")
@@ -2193,7 +2195,7 @@ sources/8 = SubResource("TileSetAtlasSource_d8mvp")
 
 [node name="Player" parent="." instance=ExtResource("3_kaiyr")]
 unique_name_in_owner = true
-position = Vector2(-13, -23)
+position = Vector2(-10, -69)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -5)
@@ -2229,21 +2231,27 @@ shape = SubResource("WorldBoundaryShape2D_clrbd")
 
 [node name="Grass Platform" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(306, -139)
+collision_layer = 2
 
 [node name="Grass Platform2" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(175, -202)
+collision_layer = 2
 
 [node name="Grass Platform6" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-298, -174)
+collision_layer = 2
 
 [node name="Grass Platform3" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(19, -302)
+collision_layer = 2
 
 [node name="Grass Platform4" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-18, -302)
+collision_layer = 2
 
 [node name="Grass Platform5" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-22, -433)
+collision_layer = 2
 
 [node name="Labels" type="Node" parent="."]
 
@@ -2374,3 +2382,6 @@ position = Vector2(304, -162)
 
 [node name="Strawberry" parent="." instance=ExtResource("24_tl4fk")]
 position = Vector2(580, -49)
+
+[node name="Cake" parent="." instance=ExtResource("21_xw50w")]
+position = Vector2(-124, -14)

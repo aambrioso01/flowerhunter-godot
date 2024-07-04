@@ -1,10 +1,9 @@
-[gd_scene load_steps=30 format=3 uid="uid://cppu0hiem7h7l"]
+[gd_scene load_steps=29 format=3 uid="uid://cppu0hiem7h7l"]
 
 [ext_resource type="Script" path="res://scripts/game/game_manager.gd" id="1_463xa"]
 [ext_resource type="FontFile" uid="uid://do40wacy5fggs" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_1l5s8"]
 [ext_resource type="PackedScene" uid="uid://dgevyvicj58gx" path="res://scenes/menus/hud.tscn" id="3_dmfot"]
 [ext_resource type="PackedScene" uid="uid://d2g2j4p1llby6" path="res://scenes/player/player.tscn" id="3_iglsi"]
-[ext_resource type="Script" path="res://scripts/player/player.gd" id="4_qao2p"]
 [ext_resource type="Texture2D" uid="uid://5f1sdwksg6fg" path="res://assets/sprites/brackeys/world_tileset.png" id="5_k4ij8"]
 [ext_resource type="Texture2D" uid="uid://cve1sm5lsuctg" path="res://black underground.png" id="6_bxfcd"]
 [ext_resource type="Texture2D" uid="uid://duoeruyjx23oo" path="res://assets/sprites/tiles/zendovia/underground.PNG" id="7_a8lcb"]
@@ -2173,7 +2172,7 @@ texture_region_size = Vector2i(500, 500)
 
 [sub_resource type="TileSet" id="TileSet_c553o"]
 tile_size = Vector2i(500, 500)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_utrwg")
 sources/1 = SubResource("TileSetAtlasSource_td0it")
 sources/2 = SubResource("TileSetAtlasSource_flkmn")
@@ -2209,7 +2208,6 @@ vertical_alignment = 1
 [node name="Player" parent="." instance=ExtResource("3_iglsi")]
 unique_name_in_owner = true
 position = Vector2(-13, -23)
-script = ExtResource("4_qao2p")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, -5)

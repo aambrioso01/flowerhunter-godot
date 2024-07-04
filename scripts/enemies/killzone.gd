@@ -3,14 +3,14 @@ extends Area2D
 @onready var game_manager = %GameManager
 
 # Player has died
-func _on_body_entered(body):
-	# Slow-mo death
+func _on_body_entered(_body):
+	# print("kill zone", body)
+	# if body == player
+	# #Slow-mo death
 	Engine.time_scale = 0.20
-	# Remove collison body
-	body.get_node("CollisionShape2D").queue_free()
-	# Wait time it takes to die
 	timer.start()
 
+# Wait time it takes to die
 func _on_timer_timeout():
 	if SaveManager.lives >= 0:
 		# Player has lost a life

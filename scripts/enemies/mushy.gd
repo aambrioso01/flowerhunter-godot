@@ -52,8 +52,8 @@ func _process(delta):
 				print("idle overwrite")	
 				animation_player.play("idle")
 	
-			if ray_cast_sight.is_colliding():
-				direction = -direction
+	if ray_cast_sight.is_colliding():
+		direction = -direction
 
 	# Stand in place when dying
 	if dying:

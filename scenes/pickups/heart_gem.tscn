@@ -1,8 +1,24 @@
-[gd_scene load_steps=9 format=3 uid="uid://t71q84m0c6vt"]
+[gd_scene load_steps=13 format=3 uid="uid://t71q84m0c6vt"]
 
 [ext_resource type="Script" path="res://scripts/pickups/heart_gem.gd" id="1_woj2y"]
 [ext_resource type="Texture2D" uid="uid://cpyvfdou1ly4j" path="res://assets/sprites/pickups/heart_gem.png" id="2_02q0u"]
-[ext_resource type="Texture2D" uid="uid://8fdircrfjbh7" path="res://assets/sprites/pickups/heart full.png" id="3_rf41w"]
+[ext_resource type="Texture2D" uid="uid://b6iw7ffitl58u" path="res://assets/sprites/pickups/Life_heart_sheet.PNG" id="3_xg1ou"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxbgc"]
+atlas = ExtResource("3_xg1ou")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8kvye"]
+atlas = ExtResource("3_xg1ou")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec4yc"]
+atlas = ExtResource("3_xg1ou")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp217"]
+atlas = ExtResource("3_xg1ou")
+region = Rect2(768, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qie4q"]
 atlas = ExtResource("2_02q0u")
@@ -24,6 +40,23 @@ region = Rect2(2048, 2048, 2048, 2048)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_wxbgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8kvye")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec4yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp217")
+}],
+"loop": true,
+"name": &"health",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_qie4q")
 }, {
 "duration": 1.0,
@@ -36,31 +69,23 @@ animations = [{
 "texture": SubResource("AtlasTexture_h80n2")
 }],
 "loop": true,
-"name": &"default",
+"name": &"old",
 "speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_rf41w")
-}],
-"loop": true,
-"name": &"version 2",
-"speed": 5.0
 }]
 
 [node name="HeartGem" type="Area2D"]
-scale = Vector2(0.04, 0.04)
-collision_mask = 2
+scale = Vector2(0.1, 0.1)
 script = ExtResource("1_woj2y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(65, 52)
 sprite_frames = SubResource("SpriteFrames_01ih1")
-autoplay = "default"
+animation = &"health"
+autoplay = "health"
+frame_progress = 0.937497
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(1, 18)
 scale = Vector2(19.6505, 19.6505)
-polygon = PackedVector2Array(0, 11, 10, 3, 14, -3, 14, -12, 8, -14, 2, -12, 0, -9, -2, -13, -7, -15, -12, -14, -15, -6, -13, 2)
+polygon = PackedVector2Array(-0.0508893, -3.46047, 2.49358, -6.00494, 6.31027, -3.46047, 5.03804, 0.356225, 1.22134, 4.17292, -5.13982, 0.356225, -6.41205, -2.18824, -5.13982, -4.7327, -2.59535, -6.00494)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

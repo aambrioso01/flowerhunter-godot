@@ -6,6 +6,7 @@ signal basic_attack
 # Collectables
 signal gem_collected
 signal berry_collected
+signal cake_collected
 
 # Health
 signal player_damaged
