@@ -240,7 +240,6 @@ _data = {
 
 [node name="Strawberry" type="Area2D"]
 scale = Vector2(0.025, 0.025)
-collision_mask = 2
 script = ExtResource("1_lfo5m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

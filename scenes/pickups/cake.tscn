@@ -1,72 +1,89 @@
-[gd_scene load_steps=26 format=3 uid="uid://be73geugn1jud"]
+[gd_scene load_steps=31 format=3 uid="uid://d305svh5o87m"]
 
-[ext_resource type="Script" path="res://scripts/pickups/gem.gd" id="1_hj12i"]
-[ext_resource type="Texture2D" uid="uid://bdwjw3tv1f155" path="res://assets/sprites/brackeys/coin.png" id="2_l1n7o"]
-[ext_resource type="Texture2D" uid="uid://bjxvix1otbq8u" path="res://assets/sprites/pickups/Gem_sheet.PNG" id="3_rt0j5"]
-[ext_resource type="AudioStream" uid="uid://2rjp3m5femkb" path="res://assets/sounds/pickups/coin.wav" id="4_guvna"]
+[ext_resource type="Script" path="res://scripts/pickups/cake.gd" id="1_1y8m1"]
+[ext_resource type="Texture2D" uid="uid://bdwjw3tv1f155" path="res://assets/sprites/brackeys/coin.png" id="2_pmgf4"]
+[ext_resource type="Texture2D" uid="uid://bjxvix1otbq8u" path="res://assets/sprites/pickups/Gem_sheet.PNG" id="3_1vrcs"]
+[ext_resource type="Texture2D" uid="uid://q2vbs8le8mlh" path="res://assets/sprites/pickups/Cake_sheet.PNG" id="3_bolvo"]
+[ext_resource type="AudioStream" uid="uid://2rjp3m5femkb" path="res://assets/sounds/pickups/coin.wav" id="4_3jxqm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b6a8e"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2t5x"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1xwt"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5syyy"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kva73"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4d8e4"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1uxr"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jdi0l"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45s8b"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(128, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6e175"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(144, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_58l33"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(160, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_71xk2"]
-atlas = ExtResource("2_l1n7o")
+atlas = ExtResource("2_pmgf4")
 region = Rect2(176, 0, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxha4"]
+atlas = ExtResource("3_bolvo")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44db1"]
+atlas = ExtResource("3_bolvo")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4q5m4"]
+atlas = ExtResource("3_bolvo")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsprj"]
+atlas = ExtResource("3_bolvo")
+region = Rect2(1536, 0, 512, 512)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8tcuj"]
-atlas = ExtResource("3_rt0j5")
+atlas = ExtResource("3_1vrcs")
 region = Rect2(0, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1pjw5"]
-atlas = ExtResource("3_rt0j5")
+atlas = ExtResource("3_1vrcs")
 region = Rect2(512, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yfxq"]
-atlas = ExtResource("3_rt0j5")
+atlas = ExtResource("3_1vrcs")
 region = Rect2(1024, 0, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5kj8x"]
-atlas = ExtResource("3_rt0j5")
+atlas = ExtResource("3_1vrcs")
 region = Rect2(1536, 0, 512, 512)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vgn24"]
@@ -114,6 +131,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_sxha4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44db1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4q5m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsprj")
+}],
+"loop": true,
+"name": &"float",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8tcuj")
 }, {
 "duration": 1.0,
@@ -131,8 +165,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kvih1"]
-radius = 222.0
-height = 556.0
+radius = 160.0
+height = 400.0
 
 [sub_resource type="Animation" id="Animation_747af"]
 length = 0.001
@@ -218,9 +252,12 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.2, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"queue_free"
+}, {
 "args": [],
 "method": &"queue_free"
 }]
@@ -232,22 +269,21 @@ _data = {
 "pickup": SubResource("Animation_gqlnj")
 }
 
-[node name="Gem" type="Area2D"]
-scale = Vector2(0.025, 0.025)
-collision_layer = 2
-script = ExtResource("1_hj12i")
+[node name="Cake" type="Area2D"]
+scale = Vector2(0.06, 0.06)
+script = ExtResource("1_1y8m1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vgn24")
-animation = &"spin"
-autoplay = "spin"
-frame_progress = 0.997653
+animation = &"float"
+autoplay = "float"
+frame_progress = 0.996095
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_kvih1")
 
 [node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_guvna")
+stream = ExtResource("4_3jxqm")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

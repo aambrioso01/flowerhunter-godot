@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwvqqw864d41d"
-path="res://.godot/imported/idle.png-f8dde98d49e737e43d8a372be2396795.ctex"
+uid="uid://btyyhkjntb6d0"
+path="res://.godot/imported/Llama_jump.PNG-e5879aeefd3dd2f7da46017f96a5d769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/player/zed/idle.png"
-dest_files=["res://.godot/imported/idle.png-f8dde98d49e737e43d8a372be2396795.ctex"]
+source_file="res://assets/sprites/player/zed/full_llama/Llama_jump.PNG"
+dest_files=["res://.godot/imported/Llama_jump.PNG-e5879aeefd3dd2f7da46017f96a5d769.ctex"]
 
 [params]
 
