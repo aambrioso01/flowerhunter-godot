@@ -1,27 +1,37 @@
 extends CharacterBody2D
 
-@export var SPEED = 120.0
-const JUMP_VELOCITY = -330.0
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+# Physical properties
+@export var SPEED = 120
+@export var boost = 1.0
+const JUMP_VELOCITY = -330
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 var jumps = 1
-var lowJumpMultiplier = -40
-var fallMultiplier = -3	
-var sprintMultiplier = 1
+var lowJumpMultiplier = -30
+var fallMultiplier = -2	
+
+# Health and status
 var health = 100
 var dying
 var llama_mode
 
-var idle_anim = "idle"
-var jump_anim = "jump"
-var hurt_anim = "hurt"
-var roll_anim = "roll"
+# Animations
+var idle
+var run
+var jump
+var hurt
+var roll
 
+# References to other nodes
 @onready var marker_2d = $Marker2D
-@onready var animation_player = $AnimationPlayer
+@onready var animation = $AnimationPlayer
+@onready var weapon = $WeaponFX
 @onready var coyote_timer = $CoyoteTimer
 @onready var death_timer = $DeathTimer
+
+# Resources
+@export var current_weapon: Weapon:
+	set(value):
+		current_weapon = value
 
 func _ready():
 	# Set flags
@@ -32,19 +42,21 @@ func _ready():
 	Signals.cake_collected.connect(self.on_cake_collected)
 
 func _physics_process(delta):
-	if not dying and animation_player.current_animation != 'transform':
+	if not dying and animation.current_animation != 'transform':
 		match llama_mode:
 			true:
-				idle_anim = 'llama_idle'
-				jump_anim = 'llama_jump'
-				hurt_anim = 'llama_hurt'
-				roll_anim = 'llama_roll'
+				idle = 'llama_idle'
+				run = 'llama_run'
+				jump = 'llama_jump'
+				hurt = 'llama_hurt'
+				roll = 'llama_roll'
 			false:
-				idle_anim = 'idle'
-				jump_anim = 'jump'
-				hurt_anim = 'hurt'
-				roll_anim = 'roll'
-			
+				idle = 'idle'
+				run = 'idle'
+				jump = 'jump'
+				hurt = 'hurt'
+				roll = 'roll'
+
 		# Player heals
 		if Input.is_action_just_pressed("berry_heal"):
 			if SaveManager.berries >= SaveManager.full_berries:
@@ -63,17 +75,17 @@ func _physics_process(delta):
 		# Player is starting to sprint
 		if Input.is_action_just_pressed("sprint"):
 			# Increase speed
-			sprintMultiplier = 1.4
+			boost = 1.4
 		if Input.is_action_just_released("sprint"):
-			sprintMultiplier = 1
+			boost = 1
 
 		# Rolling dodge move
 		if Input.is_action_just_pressed("roll"):
-			animation_player.play(roll_anim)
+			animation.play(roll)
 
 		# Jump pressed and player is on the ground
 		if Input.is_action_just_pressed("jump"):
-			jump(jumps)
+			check_jump(jumps)
 			if coyote_timer.is_stopped():
 				jumps -= 1
 
@@ -89,21 +101,26 @@ func _physics_process(delta):
 		# Jump Height depends on how long button is held
 			velocity += Vector2.UP * (lowJumpMultiplier)
 
-		if not dying:
-			# After landing on the grounda
-			if is_on_floor():
-				# Play animations
-				animation_player.queue(idle_anim)
-				# Reset jumps
-				jumps = 1
-			# While in the air
-			else:
-				# Play animations	
-				animation_player.queue(jump_anim)
+		# After landing on the ground
+		if is_on_floor():
+			# Reset jumps
+			jumps = 1
+			# Play animations
+			if animation.current_animation != roll:
+				if velocity.x >= -1 and velocity.x <= 1:
+					animation.play(idle)
+				else:
+					animation.play(run)
+		# While in the air
+		else:
+			# Add the gravity.
+			velocity.y += gravity * delta
+			# Play animations	
+			# animation.play(jump)
 
 		# Move player
 		if direction:
-			velocity.x = direction * SPEED * sprintMultiplier
+			velocity.x = direction * SPEED * boost
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
@@ -114,10 +131,6 @@ func _physics_process(delta):
 		elif direction < 0:
 			marker_2d.scale.x = -1
 			# animated_sprite.flip_h = false
-
-		# Add the gravity.
-		if not is_on_floor():
-			velocity.y += gravity * delta
 
 		# Check if player is standing on something they can jump off	
 		var was_on_floor = is_on_floor()
@@ -132,20 +145,20 @@ func _physics_process(delta):
 	else:
 		velocity = Vector2(0, 0)
 
-func jump(jumps_remaining):
+func check_jump(jumps_remaining):
 	if jumps_remaining > 0:
 			velocity.y = JUMP_VELOCITY
-			animation_player.play(jump_anim)
+			animation.play(jump)
 
 # Player took damage and loses health
 func on_player_damaged(amount):
 	if not dying:
-		animation_player.play(hurt_anim)
+		animation.play(hurt)
 		health -= amount
 		if health <= 0:
 			die()
 		elif llama_mode:
-			animation_player.play('transform')
+			animation.play('transform')
 			llama_mode = false
 
 # Player is out of health
@@ -153,9 +166,9 @@ func die():
 	# Start death sequence
 	dying = true
 	# Stop any other animation
-	animation_player.stop()
+	animation.stop()
 	# Play death animation
-	animation_player.queue("death")
+	animation.play("death")
 	
 	# Wait time it takes to die
 	death_timer.start()
@@ -174,4 +187,4 @@ func _on_death_timer_timeout():
 
 func on_cake_collected():
 	llama_mode = true
-	animation_player.play('transform')
+	animation.play('transform')

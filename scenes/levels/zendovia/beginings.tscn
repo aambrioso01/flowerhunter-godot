@@ -2231,27 +2231,21 @@ shape = SubResource("WorldBoundaryShape2D_clrbd")
 
 [node name="Grass Platform" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(306, -139)
-collision_layer = 2
 
 [node name="Grass Platform2" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(175, -202)
-collision_layer = 2
 
 [node name="Grass Platform6" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-298, -174)
-collision_layer = 2
 
 [node name="Grass Platform3" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(19, -302)
-collision_layer = 2
 
 [node name="Grass Platform4" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-18, -302)
-collision_layer = 2
 
 [node name="Grass Platform5" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-22, -433)
-collision_layer = 2
 
 [node name="Labels" type="Node" parent="."]
 
