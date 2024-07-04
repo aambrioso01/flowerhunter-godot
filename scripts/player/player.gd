@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 # Physical properties
-@export var SPEED = 120
-@export var boost = 1.0
+const SPEED = 140
 const JUMP_VELOCITY = -330
+@export var boost = 1.0
+var sprint_multiplier = 1.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps = 1
 var lowJumpMultiplier = -30
@@ -75,9 +76,9 @@ func _physics_process(delta):
 		# Player is starting to sprint
 		if Input.is_action_just_pressed("sprint"):
 			# Increase speed
-			boost = 1.4
+			sprint_multiplier = 1.4
 		if Input.is_action_just_released("sprint"):
-			boost = 1
+			sprint_multiplier = 1
 
 		# Rolling dodge move
 		if Input.is_action_just_pressed("roll"):
@@ -120,7 +121,7 @@ func _physics_process(delta):
 
 		# Move player
 		if direction:
-			velocity.x = direction * SPEED * boost
+			velocity.x = direction * SPEED * boost * sprint_multiplier
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
