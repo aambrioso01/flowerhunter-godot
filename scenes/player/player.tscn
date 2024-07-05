@@ -19,7 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://puvlu17giwih" path="res://assets/sprites/player/zed/full_llama/Llama_roll.PNG" id="16_3fll4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o721w"]
-radius = 80.0
+radius = 90.0
 
 [sub_resource type="Animation" id="Animation_cfc75"]
 length = 0.001
