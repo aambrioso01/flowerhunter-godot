@@ -21,6 +21,7 @@ var run
 var jump
 var hurt
 var roll
+var interruptions
 
 # References to other nodes
 @onready var marker_2d = $Marker2D
@@ -58,6 +59,8 @@ func _physics_process(delta):
 				hurt = 'hurt'
 				roll = 'roll'
 
+		interruptions = [hurt, roll]
+
 		# Player heals
 		if Input.is_action_just_pressed("berry_heal"):
 			if SaveManager.berries >= SaveManager.full_berries:
@@ -82,13 +85,17 @@ func _physics_process(delta):
 
 		# Rolling dodge move
 		if Input.is_action_just_pressed("roll"):
-			animation.play(roll)
+			play_animation(roll)
 
 		# Jump pressed and player is on the ground
 		if Input.is_action_just_pressed("jump"):
 			check_jump(jumps)
 			if coyote_timer.is_stopped():
 				jumps -= 1
+
+		# Jump pressed and player is on the ground
+		if Input.is_action_just_pressed("weapon"):
+			pass
 
 		# Get the input direction: -1, 0, 1
 		var direction = Input.get_axis("move_left", "move_right")
@@ -107,17 +114,17 @@ func _physics_process(delta):
 			# Reset jumps
 			jumps = 1
 			# Play animations
-			if animation.current_animation != roll:
+			if animation.current_animation not in interruptions:
 				if velocity.x >= -1 and velocity.x <= 1:
-					animation.play(idle)
+					play_animation(idle)
 				else:
-					animation.play(run)
+					play_animation(run)
 		# While in the air
 		else:
 			# Add the gravity.
 			velocity.y += gravity * delta
 			# Play animations	
-			# animation.play(jump)
+			# play_animation(jump)
 
 		# Move player
 		if direction:
@@ -149,17 +156,17 @@ func _physics_process(delta):
 func check_jump(jumps_remaining):
 	if jumps_remaining > 0:
 			velocity.y = JUMP_VELOCITY
-			animation.play(jump)
+			play_animation(jump)
 
 # Player took damage and loses health
 func on_player_damaged(amount):
 	if not dying:
-		animation.play(hurt)
+		play_animation(hurt)
 		health -= amount
 		if health <= 0:
 			die()
 		elif llama_mode:
-			animation.play('transform')
+			play_animation('transform')
 			llama_mode = false
 
 # Player is out of health
@@ -169,7 +176,7 @@ func die():
 	# Stop any other animation
 	animation.stop()
 	# Play death animation
-	animation.play("death")
+	play_animation("death")
 	
 	# Wait time it takes to die
 	death_timer.start()
@@ -188,4 +195,11 @@ func _on_death_timer_timeout():
 
 func on_cake_collected():
 	llama_mode = true
-	animation.play('transform')
+	play_animation('transform')
+
+func play_animation(animation_name):
+	animation.play(animation_name)
+
+	if current_weapon != null:
+		$Marker2D/Weapon.texture = current_weapon.texture
+		weapon.play(current_weapon.animation)

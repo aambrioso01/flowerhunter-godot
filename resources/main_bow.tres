@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://dsubhpcplkxl8"]
 
-[ext_resource type="Texture2D" uid="uid://cvaavy0nsm7yy" path="res://assets/sprites/weapons/bow/Arrow_teal_projectile.PNG" id="1_2ojvp"]
+[ext_resource type="Texture2D" uid="uid://c3qxbcf2tgyqb" path="res://assets/sprites/weapons/bow/Bow_button.PNG" id="1_n30ux"]
 [ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="2_h626f"]
 [ext_resource type="Texture2D" uid="uid://cipjkur7116ns" path="res://assets/sprites/weapons/bow/Bow_sheet.PNG" id="3_bt8l2"]
 
@@ -9,6 +9,6 @@ script = ExtResource("2_h626f")
 name = ""
 texture = ExtResource("3_bt8l2")
 damage = 100.0
-icon = ExtResource("1_2ojvp")
+icon = ExtResource("1_n30ux")
 animation = "bow"
 projectile = 0

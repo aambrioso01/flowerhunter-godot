@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
-@onready var player = %Player
-
+# Imports
 @onready var sprite_2d = $Sprite2D
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_sight = $Sprite2D/RayCastSight
@@ -10,53 +9,53 @@ extends CharacterBody2D
 @onready var collision_body = $CollisionPolygon2D2
 @onready var hitbox = $DamageArea/Hitbox
 @onready var attack_timer = $AttackTimer
+@onready var player = %Player
 
+# Signals
 signal enemy_damaged
 
-const SPEED = 60
-var direction = 1
-var health = 100
-var punch_anim = 'punch'
-var idle_anim = 'idle'
-var dying_anim = 'dying'
-var dying = false
+# Movement
+const SPEED = 70
+var direction
+@export var sprint_multiplier = 2	
+
+# Status
+var health
+var is_dying = false
 var agro = false
+var can_attack = true
+
+# Animations
+var punch = 'punch'
+var idle = 'idle'	
+var dying = 'dying'
 var fight_moves = ["swipe", "stomp", "dash"]
-var current_move = 0
-var is_attacking = false
 
 func _ready():
 	# Listen for damage taken
 	enemy_damaged.connect(on_enemy_damaged)
 
-	# Connect the animation_finished signal to the on_animation_finished function
-	# animation_player.connect("animation_finished", on_animation_finished)
-
-	# Start playing the first animation
-	# animation_player.play(fight_moves[current_move])
+	# Default status
+	direction = 1
+	health = 100
 
 func _process(delta):
 	match agro:
 		true:
 			# Enemy is aware of and aggressive towards player
-			if not dying:
-				if attack_timer.is_stopped():
-					if animation_player.current_animation == idle_anim:
-						animation_player.stop()
-					attack_timer.start()
-					play_random_move()
+			if not is_dying:
+				play_random_move()
 				# Move towards player
-				direction = (player.position - position).normalized().x
+				direction = (player.position - position).normalized().x * sprint_multiplier
 		false:
-			if not dying and not animation_player.is_playing():
-				print("idle overwrite")	
-				animation_player.play("idle")
-	
-	if ray_cast_sight.is_colliding():
-		direction = -direction
+			if ray_cast_sight.is_colliding():
+				direction = -direction
+
+			if not is_dying and not animation_player.is_playing():
+				animation_player.play(idle)
 
 	# Stand in place when dying
-	if dying:
+	if is_dying:
 		direction = 0
 	
 	# Face the direction of movementd
@@ -75,24 +74,18 @@ func on_enemy_damaged(amount):
 
 # Timed death sequence
 func die():
-	dying = true
-	animation_player.play("dying")
+	is_dying = true
+	animation_player.play(dying)
 
 func play_random_move():
-	var move = fight_moves.pick_random()
-	animation_player.queue(move)
+	if can_attack:
+		var move = fight_moves.pick_random()
+		animation_player.play(move)
 
-	#if is_attacking:
-		#var move = fight_moves.pick_random()
-		#animated_sprite.play(move)
+		attack_timer.start()
+		can_attack = false
+	elif not animation_player.is_playing():
+		animation_player.play(idle)
 		
-# func on_animation_finished():
-# 	# Move to the next animation in the queue
-# 	current_move += 1
-# 	print(" Move to the next animation in the queue")
-# 	is_attacking = false
-
-# 	# If the current_move is within the bounds of the fight_moves
-# 	if current_move < fight_moves.size():
-# 		# Play the next animation
-# 		animation_player.play(fight_moves[current_move])
+func _on_attack_timer_timeout():
+	can_attack = true

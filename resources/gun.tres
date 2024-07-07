@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://dlvb1buuop4vn"]
+
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="1_r47ou"]
+[ext_resource type="Texture2D" uid="uid://c31pttcj4bq3j" path="res://assets/sprites/weapons/guns/Gun_button.PNG" id="1_sksl7"]
+[ext_resource type="Texture2D" uid="uid://gbrdppem15nk" path="res://assets/sprites/weapons/guns/Gun_sheet.PNG" id="2_ja6qa"]
+
+[resource]
+script = ExtResource("1_r47ou")
+name = ""
+texture = ExtResource("2_ja6qa")
+damage = 50.0
+icon = ExtResource("1_sksl7")
+animation = "gun"
+projectile = 0

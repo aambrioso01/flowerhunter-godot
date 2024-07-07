@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bkdp6i76bgu" path="res://scenes/levels/transitions/portal.tscn" id="21_yukf6"]
 [ext_resource type="PackedScene" uid="uid://calybjnf7m6j4" path="res://scenes/platforms/grass_platform.tscn" id="22_erfxb"]
 [ext_resource type="PackedScene" uid="uid://bk2nhjjtjn6ym" path="res://scenes/pickups/strawberry.tscn" id="23_48iol"]
-[ext_resource type="PackedScene" uid="uid://cppu0hiem7h7l" path="res://scenes/levels/zendovia/collecting_gems.tscn" id="23_h71cv"]
+[ext_resource type="PackedScene" uid="uid://cppu0hiem7h7l" path="res://scenes/levels/zendovia/test.tscn" id="23_h71cv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_utrwg"]
 texture = ExtResource("5_x2of5")
