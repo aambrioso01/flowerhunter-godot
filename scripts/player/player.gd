@@ -9,7 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps = 1
 var lowJumpMultiplier = -30
 var fallMultiplier = -2
-@export var knockback_power = 5 
+@export var knockback_multiplier = 10
 
 # Health and status
 var health = 100
@@ -214,7 +214,18 @@ func check_jump(jumps_remaining):
 # Player took damage and loses health
 func on_player_damaged(amount):
 	if not is_dying:
-		knockback()
+		# Calculate and apply knockback
+		var knock_direction
+		if velocity.x < 0:
+			knock_direction = -velocity.normalized() - Vector2(3, 0)
+		elif velocity.x >= 0:
+			knock_direction = -velocity.normalized() + Vector2(3, 0)
+
+		var knock_power = amount * knockback_multiplier
+		var knockback = knock_direction * knock_power
+		velocity = knockback
+		move_and_slide()
+		# Player wince face / flinch
 		animation.play(hurt)
 		health -= amount
 		if health <= 0:
@@ -265,10 +276,3 @@ func shoot_projectile():
 	projectile.set_direction($Marker2D.scale.x, current_weapon.projectile)
 	projectile.damage = current_weapon.damage
 	get_tree().current_scene.add_child(projectile)
-
-func knockback():
-	print("knockback")
-	var knock_direction = -velocity.normalized() * knockback_power
-	velocity = knock_direction
-	move_and_slide()
-	print_debug(velocity)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dgkmnis2fe61o"]
+[gd_scene load_steps=25 format=3 uid="uid://dgkmnis2fe61o"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mushy.gd" id="1_oykws"]
 [ext_resource type="Texture2D" uid="uid://dcjnk2fer4oiq" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_Idle_sheet.PNG" id="2_ytmhq"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bxovqlgm4imlb" path="res://scenes/damage_area.tscn" id="6_n2mdu"]
 [ext_resource type="PackedScene" uid="uid://dk0461di27tmg" path="res://agro_zone.tscn" id="7_hsk4c"]
 [ext_resource type="Texture2D" uid="uid://bj0mwoac5wh1" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_swipe_sheet.PNG" id="7_linic"]
+[ext_resource type="Texture2D" uid="uid://blmwcfcikue8" path="res://assets/sprites/impacts/Main_impact.PNG" id="9_2qvr4"]
 [ext_resource type="AudioStream" uid="uid://dgf38bhondud0" path="res://assets/sounds/combat/swipe-whoosh.wav" id="11_8ua0q"]
 
 [sub_resource type="Animation" id="Animation_3qqte"]
@@ -894,6 +895,115 @@ _data = {
 "swipe": SubResource("Animation_1tlu2")
 }
 
+[sub_resource type="Animation" id="Animation_4swq7"]
+resource_name = "impact"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_40jej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kriqh"]
+_data = {
+"RESET": SubResource("Animation_40jej"),
+"impact": SubResource("Animation_4swq7")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpsbe"]
 size = Vector2(305.088, 5.14216)
 
@@ -936,6 +1046,19 @@ position = Vector2(10, -13.3333)
 scale = Vector2(1.05, 1.05)
 polygon = PackedVector2Array(47.6191, 63.4921, 123.81, 57.1429, 142.857, -9.52381, 114.286, -57.1429, 57.1429, -95.2381, 0, -190.476, -57.1429, -171.429, -133.333, -95.2381, -171.429, -19.0476, -161.905, 38.0952, -95.2381, 63.4921, 15.873, 63.4921)
 disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageArea"]
+libraries = {
+"": SubResource("AnimationLibrary_kriqh")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="DamageArea"]
+visible = false
+visibility_layer = 1024
+z_index = 10
+position = Vector2(-20, 70)
+texture = ExtResource("9_2qvr4")
+hframes = 6
 
 [node name="AgroZone" parent="." instance=ExtResource("7_hsk4c")]
 visible = false
