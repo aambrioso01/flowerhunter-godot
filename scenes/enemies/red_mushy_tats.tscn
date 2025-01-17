@@ -1,15 +1,15 @@
 [gd_scene load_steps=21 format=3 uid="uid://dgkmnis2fe61o"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mushy.gd" id="1_oykws"]
-[ext_resource type="Texture2D" uid="uid://dcjnk2fer4oiq" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_Idle_sheet.PNG" id="3_82bbd"]
-[ext_resource type="Texture2D" uid="uid://brccs1osmh11w" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_death_sheet.PNG" id="3_jww2p"]
-[ext_resource type="Texture2D" uid="uid://bg3hktngrp73u" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_dash.PNG" id="3_lumg2"]
-[ext_resource type="Texture2D" uid="uid://bfsqtsmcf2yqp" path="res://assets/sprites/enemies/mushies/tat_mushy/Main_puff_cloud.PNG" id="3_w340o"]
-[ext_resource type="Texture2D" uid="uid://bj0mwoac5wh1" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_swipe_sheet.PNG" id="4_t33d3"]
+[ext_resource type="Texture2D" uid="uid://dcjnk2fer4oiq" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_Idle_sheet.PNG" id="2_ytmhq"]
+[ext_resource type="Texture2D" uid="uid://bg3hktngrp73u" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_dash.PNG" id="3_l35fv"]
+[ext_resource type="Texture2D" uid="uid://brccs1osmh11w" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_death_sheet.PNG" id="4_n4sfu"]
+[ext_resource type="Texture2D" uid="uid://bfsqtsmcf2yqp" path="res://assets/sprites/enemies/mushies/red_mushy/Main_puff_cloud.PNG" id="5_kobxl"]
+[ext_resource type="Texture2D" uid="uid://d12plcbw66iqi" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_new_stomp.PNG" id="6_ehnls"]
 [ext_resource type="AudioStream" uid="uid://bsekfc6xy5hoi" path="res://assets/sounds/combat/death-explode.wav" id="6_i67lv"]
-[ext_resource type="Texture2D" uid="uid://d4hbf1kylqw1i" path="res://assets/sprites/enemies/mushies/tat_mushy/Mushy_stomp_sheet.PNG" id="6_lgnep"]
 [ext_resource type="PackedScene" uid="uid://bxovqlgm4imlb" path="res://scenes/damage_area.tscn" id="6_n2mdu"]
 [ext_resource type="PackedScene" uid="uid://dk0461di27tmg" path="res://agro_zone.tscn" id="7_hsk4c"]
+[ext_resource type="Texture2D" uid="uid://bj0mwoac5wh1" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_swipe_sheet.PNG" id="7_linic"]
 [ext_resource type="AudioStream" uid="uid://dgf38bhondud0" path="res://assets/sounds/combat/swipe-whoosh.wav" id="11_8ua0q"]
 
 [sub_resource type="Animation" id="Animation_3qqte"]
@@ -36,7 +36,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_82bbd")]
+"values": [ExtResource("2_ytmhq")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -220,7 +220,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_lumg2")]
+"values": [ExtResource("3_l35fv")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -261,11 +261,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionPolygon2D2:visible")
+tracks/4/path = NodePath("DamageArea/Hitbox:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -273,70 +273,46 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionPolygon2D2:disabled")
+tracks/5/path = NodePath("DamageArea/Hitbox:polygon")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("DamageArea/Hitbox:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("DamageArea/Hitbox:polygon")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [PackedVector2Array(47.6191, 63.4921, 85.7143, 38.0952, 95.2381, -38.0952, 28.5714, -76.1905, -114.286, -76.1905, -171.429, -19.0476, -142.857, 28.5714, -19.0476, 76.1905), PackedVector2Array(47.6191, 63.4921, 85.7143, 38.0952, 95.2381, -38.0952, 28.5714, -76.1905, -114.286, -85.7143, -171.429, -19.0476, -142.857, 47.619, -19.0476, 76.1905)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("DamageArea/Hitbox:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DamageArea/Hitbox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-20, 20), Vector2(-70, 20)]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("DamageArea/Hitbox:visible")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DamageArea/Hitbox:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath(".:sprint_multiplier")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:sprint_multiplier")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -356,7 +332,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("3_jww2p"), ExtResource("3_w340o")]
+"values": [ExtResource("4_n4sfu"), ExtResource("5_kobxl")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -471,7 +447,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_82bbd")]
+"values": [ExtResource("2_ytmhq")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -571,7 +547,7 @@ tracks/8/keys = {
 }
 tracks/9/type = "value"
 tracks/9/imported = false
-tracks/9/enabled = true
+tracks/9/enabled = false
 tracks/9/path = NodePath("CollisionPolygon2D2:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
@@ -659,7 +635,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_lgnep")]
+"values": [ExtResource("6_ehnls")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -671,7 +647,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [6]
+"values": [5]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -683,7 +659,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [2]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -692,10 +668,10 @@ tracks/3/path = NodePath("Sprite2D:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.06, 0.13, 0.22, 0.26, 0.3, 0.4, 0.5, 0.55, 0.6, 0.65),
+"times": PackedFloat32Array(0, 0.06, 0.13, 0.2, 0.26, 0.33, 0.4, 0.46, 0.53, 0.59, 0.65),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+"values": [0, 1, 2, 3, 4, 5, 6, 9, 2, 1, 0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -731,7 +707,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(533.333, 171.429, 171.429, -28.5714, 57.1429, -66.6667, -114.286, -66.6667, -580.952, 9.52381, -752.381, 161.905, -161.905, 161.905, 66.6667, 161.905)]
+"values": [PackedVector2Array(457.143, -15.873, 380.952, -120.635, -190.476, -177.778, -276.19, -82.5397, -285.714, 146.032, 19.0476, 212.698, 419.048, 155.556)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -740,10 +716,22 @@ tracks/7/path = NodePath(".:sprint_multiplier")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.48),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [2, 1, 2]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprite2D:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.22, 0.27, 0.55, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 80), Vector2(0, 80), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_1tlu2"]
@@ -760,7 +748,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_t33d3")]
+"values": [ExtResource("7_linic")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -917,7 +905,7 @@ collision_priority = 2.0
 script = ExtResource("1_oykws")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_82bbd")
+texture = ExtResource("2_ytmhq")
 hframes = 4
 frame = 1
 
@@ -969,5 +957,7 @@ stream = ExtResource("11_8ua0q")
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

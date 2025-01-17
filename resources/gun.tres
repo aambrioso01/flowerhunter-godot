@@ -10,5 +10,5 @@ name = ""
 texture = ExtResource("2_ja6qa")
 damage = 50.0
 icon = ExtResource("1_sksl7")
-animation = "gun"
-projectile = 0
+animation = "gun/"
+projectile = 2

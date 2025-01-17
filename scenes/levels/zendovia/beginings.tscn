@@ -2289,17 +2289,12 @@ theme_override_fonts/font = ExtResource("14_sfhus")
 theme_override_font_sizes/font_size = 8
 text = "That's probably a lot right?"
 
+[node name="Mushies" type="Node" parent="."]
+
+[node name="RedMushyTats2" parent="Mushies" instance=ExtResource("15_03ryg")]
+position = Vector2(-48, -19)
+
 [node name="Enemies" type="Node" parent="."]
-
-[node name="Mushies" type="Node" parent="Enemies"]
-
-[node name="RedMushyTats" parent="Enemies/Mushies" instance=ExtResource("15_03ryg")]
-visible = false
-position = Vector2(-188, -17)
-
-[node name="RedMushyTats3" parent="Enemies/Mushies" instance=ExtResource("15_03ryg")]
-visible = false
-position = Vector2(85, -17)
 
 [node name="Powerups" type="Node" parent="."]
 

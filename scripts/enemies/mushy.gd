@@ -47,6 +47,8 @@ func _process(delta):
 				play_random_move()
 				# Move towards player
 				direction = (player.position - position).normalized().x * sprint_multiplier
+			if ray_cast_sight.is_colliding():
+				agro = false
 		false:
 			if ray_cast_sight.is_colliding():
 				direction = -direction
@@ -58,7 +60,7 @@ func _process(delta):
 	if is_dying:
 		direction = 0
 	
-	# Face the direction of movementd
+	# Face the direction of movement
 	if direction > 0:
 		sprite_2d.scale.x = -1
 	elif direction < 0:

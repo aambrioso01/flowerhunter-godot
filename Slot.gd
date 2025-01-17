@@ -10,6 +10,7 @@ var custom_size = Vector2(150,150)
 		weapon = value
 		
 		if get_parent().name == "CurrentWeapon":
+			print("equip:", weapon)
 			get_parent().equip(weapon)
 		
 		if value != null:

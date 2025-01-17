@@ -1,12 +1,11 @@
 extends GridContainer
 
 @onready var slots = get_children()
+@onready var player = %Player
 
 func _ready():
-	add_weapon(load("res://resources/pink_sword.tres"))
-	add_weapon(load("res://resources/main_bow.tres"))
-	add_weapon(load("res://resources/staff.tres"))
-	add_weapon(load("res://resources/gun.tres"))
+	for weapon in player.weapon_list:
+		add_weapon(load(weapon))
 
 func add_weapon(weapon: Weapon):
 	for slot in slots:
