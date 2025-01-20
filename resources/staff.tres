@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://p44srf2omu22"]
+
+[ext_resource type="Texture2D" uid="uid://tkc08bokneem" path="res://assets/sprites/weapons/staff/Staff_button.PNG" id="1_6u5q8"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="2_jdn1h"]
+[ext_resource type="Texture2D" uid="uid://blfiulcys7yck" path="res://assets/sprites/weapons/staff/rotated_staff_small.png" id="3_aqai2"]
+
+[resource]
+script = ExtResource("2_jdn1h")
+name = ""
+texture = ExtResource("3_aqai2")
+damage = 30.0
+icon = ExtResource("1_6u5q8")
+animation = "staff/"
+projectile = 3

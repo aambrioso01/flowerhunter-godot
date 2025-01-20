@@ -1,72 +1,107 @@
 extends CharacterBody2D
 
-@onready var player = %Player
-
+# Imports
+@onready var mushy = $"."
 @onready var sprite_2d = $Sprite2D
-@onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_sight = $Sprite2D/RayCastSight
 @onready var animation_player = $AnimationPlayer
 @onready var death_timer = $DeathTimer 
 @onready var collision_body = $CollisionPolygon2D2
 @onready var hitbox = $DamageArea/Hitbox
 @onready var attack_timer = $AttackTimer
+@onready var player = %Player
+@onready var flip_timer = $FlipTimer
 
+# Signals
 signal enemy_damaged
 
-const SPEED = 60
-var direction = 1
-var health = 100
-var punch_anim = 'punch'
-var idle_anim = 'idle'
-var dying_anim = 'dying'
-var dying = false
+# Movement
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const SPEED = 100
+var direction
+@export var sprint_multiplier = 1	
+var last_direction
+var can_flip = true
+
+# Status
+var health
+var is_dying = false
 var agro = false
+var can_attack = true
+
+# Animations
+var punch = 'punch'
+var idle = 'idle'	
+var dying = 'dying'
 var fight_moves = ["swipe", "stomp", "dash"]
-var current_move = 0
-var is_attacking = false
 
 func _ready():
 	# Listen for damage taken
 	enemy_damaged.connect(on_enemy_damaged)
 
-	# Connect the animation_finished signal to the on_animation_finished function
-	# animation_player.connect("animation_finished", on_animation_finished)
-
-	# Start playing the first animation
-	# animation_player.play(fight_moves[current_move])
+	# Default status
+	direction = 1
+	health = 100
 
 func _process(delta):
 	match agro:
 		true:
 			# Enemy is aware of and aggressive towards player
-			if not dying:
-				if attack_timer.is_stopped():
-					if animation_player.current_animation == idle_anim:
-						animation_player.stop()
-					attack_timer.start()
-					play_random_move()
+			if not is_dying:
+				play_random_move()
 				# Move towards player
-				direction = (player.position - position).normalized().x
+				# print((player.position - position).normalized().snapped(Vector2.ONE))
+				direction = (player.position - position).normalized().snapped(Vector2.ONE).x
+				sprint_multiplier = 1.5
+
+			if ray_cast_sight.is_colliding():
+				agro = false
+				
 		false:
-			if not dying and not animation_player.is_playing():
-				print("idle overwrite")	
-				animation_player.play("idle")
-	
-	if ray_cast_sight.is_colliding():
-		direction = -direction
+			# Return 1 or -1 for direction
+			direction = sign(direction)
+
+			sprint_multiplier = 1
+
+			if ray_cast_sight.is_colliding():
+				direction = -direction
+
+			if not is_dying and not animation_player.is_playing():
+				animation_player.play(idle)
 
 	# Stand in place when dying
-	if dying:
+	if is_dying:
 		direction = 0
 	
-	# Face the direction of movementd
-	if direction > 0:
-		sprite_2d.scale.x = -1
-	elif direction < 0:
-		sprite_2d.scale.x = 1
+	# If enemy stops moving then set direction as last direction move
+	if direction != 0:
+		last_direction = direction
+	else:
+		direction = last_direction / 100
+
+	if can_flip:
+		# Face the direction of movement
+		flip_timer.start()
+		if direction > 0:
+			# print("look right")
+			mushy.scale.y = -0.1
+			mushy.rotation = -PI
+			can_flip = false
+		if direction < 0:
+			# print("look left")
+			mushy.scale.y = 0.1
+			mushy.rotation = 0
+			can_flip = false
+
+	# Clamp direction
+	# direction = clamp(direction, -1, 1)
 
 	# default movement side to side
-	position.x += direction * SPEED * delta
+	velocity.x = direction * SPEED * sprint_multiplier
+	move_and_slide()
+
+	# Add gravity.
+	velocity.y += gravity * delta
 
 func on_enemy_damaged(amount):
 	health -= amount
@@ -75,24 +110,21 @@ func on_enemy_damaged(amount):
 
 # Timed death sequence
 func die():
-	dying = true
-	animation_player.play("dying")
+	is_dying = true
+	animation_player.play(dying)
 
 func play_random_move():
-	var move = fight_moves.pick_random()
-	animation_player.queue(move)
+	if can_attack:
+		var move = fight_moves.pick_random()
+		animation_player.play(move)
 
-	#if is_attacking:
-		#var move = fight_moves.pick_random()
-		#animated_sprite.play(move)
+		attack_timer.start()
+		can_attack = false
+	elif not animation_player.is_playing():
+		animation_player.play(idle)
 		
-# func on_animation_finished():
-# 	# Move to the next animation in the queue
-# 	current_move += 1
-# 	print(" Move to the next animation in the queue")
-# 	is_attacking = false
+func _on_attack_timer_timeout():
+	can_attack = true
 
-# 	# If the current_move is within the bounds of the fight_moves
-# 	if current_move < fight_moves.size():
-# 		# Play the next animation
-# 		animation_player.play(fight_moves[current_move])
+func _on_flip_timer_timeout():
+	can_flip = true

@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://vycw1uttv4wx"]
+
+[ext_resource type="Script" path="res://Slot.gd" id="1_a65x3"]
+
+[node name="Slot" type="PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(450, 450)
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 1
+script = ExtResource("1_a65x3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+expand_mode = 2
+stretch_mode = 3

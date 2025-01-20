@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://unq72eo6wtmf"]
+
+[ext_resource type="Texture2D" uid="uid://cu81hsvw5k1ls" path="res://assets/sprites/weapons/sword/Sword_button.PNG" id="1_pvvwt"]
+[ext_resource type="Script" path="res://scripts/weapons/weapon.gd" id="2_pbls0"]
+[ext_resource type="Texture2D" uid="uid://dey3fswn0wohi" path="res://assets/sprites/weapons/sword/pink_sword_set.png" id="3_dtjjj"]
+
+[resource]
+script = ExtResource("2_pbls0")
+name = ""
+texture = ExtResource("3_dtjjj")
+damage = 50.0
+icon = ExtResource("1_pvvwt")
+animation = "sword/"
+projectile = 0

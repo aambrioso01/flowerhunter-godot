@@ -2231,27 +2231,21 @@ shape = SubResource("WorldBoundaryShape2D_clrbd")
 
 [node name="Grass Platform" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(306, -139)
-collision_layer = 2
 
 [node name="Grass Platform2" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(175, -202)
-collision_layer = 2
 
 [node name="Grass Platform6" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-298, -174)
-collision_layer = 2
 
 [node name="Grass Platform3" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(19, -302)
-collision_layer = 2
 
 [node name="Grass Platform4" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-18, -302)
-collision_layer = 2
 
 [node name="Grass Platform5" parent="Platforms" instance=ExtResource("25_n2p4x")]
 position = Vector2(-22, -433)
-collision_layer = 2
 
 [node name="Labels" type="Node" parent="."]
 
@@ -2295,15 +2289,12 @@ theme_override_fonts/font = ExtResource("14_sfhus")
 theme_override_font_sizes/font_size = 8
 text = "That's probably a lot right?"
 
+[node name="Mushies" type="Node" parent="."]
+
+[node name="RedMushyTats2" parent="Mushies" instance=ExtResource("15_03ryg")]
+position = Vector2(-48, -19)
+
 [node name="Enemies" type="Node" parent="."]
-
-[node name="Mushies" type="Node" parent="Enemies"]
-
-[node name="RedMushyTats" parent="Enemies/Mushies" instance=ExtResource("15_03ryg")]
-position = Vector2(-180, -17)
-
-[node name="RedMushyTats3" parent="Enemies/Mushies" instance=ExtResource("15_03ryg")]
-position = Vector2(85, -17)
 
 [node name="Powerups" type="Node" parent="."]
 
