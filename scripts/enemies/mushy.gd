@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 # Imports
+@onready var mushy = $"."
 @onready var sprite_2d = $Sprite2D
-@onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_sight = $Sprite2D/RayCastSight
 @onready var animation_player = $AnimationPlayer
 @onready var death_timer = $DeathTimer 
@@ -10,14 +10,18 @@ extends CharacterBody2D
 @onready var hitbox = $DamageArea/Hitbox
 @onready var attack_timer = $AttackTimer
 @onready var player = %Player
+@onready var flip_timer = $FlipTimer
 
 # Signals
 signal enemy_damaged
 
 # Movement
-const SPEED = 70
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+const SPEED = 100
 var direction
-@export var sprint_multiplier = 2	
+@export var sprint_multiplier = 1	
+var last_direction
+var can_flip = true
 
 # Status
 var health
@@ -46,10 +50,19 @@ func _process(delta):
 			if not is_dying:
 				play_random_move()
 				# Move towards player
-				direction = (player.position - position).normalized().x * sprint_multiplier
+				# print((player.position - position).normalized().snapped(Vector2.ONE))
+				direction = (player.position - position).normalized().snapped(Vector2.ONE).x
+				sprint_multiplier = 1.5
+
 			if ray_cast_sight.is_colliding():
 				agro = false
+				
 		false:
+			# Return 1 or -1 for direction
+			direction = sign(direction)
+
+			sprint_multiplier = 1
+
 			if ray_cast_sight.is_colliding():
 				direction = -direction
 
@@ -60,14 +73,35 @@ func _process(delta):
 	if is_dying:
 		direction = 0
 	
-	# Face the direction of movement
-	if direction > 0:
-		sprite_2d.scale.x = -1
-	elif direction < 0:
-		sprite_2d.scale.x = 1
+	# If enemy stops moving then set direction as last direction move
+	if direction != 0:
+		last_direction = direction
+	else:
+		direction = last_direction / 100
+
+	if can_flip:
+		# Face the direction of movement
+		flip_timer.start()
+		if direction > 0:
+			# print("look right")
+			mushy.scale.y = -0.1
+			mushy.rotation = -PI
+			can_flip = false
+		if direction < 0:
+			# print("look left")
+			mushy.scale.y = 0.1
+			mushy.rotation = 0
+			can_flip = false
+
+	# Clamp direction
+	# direction = clamp(direction, -1, 1)
 
 	# default movement side to side
-	position.x += direction * SPEED * delta
+	velocity.x = direction * SPEED * sprint_multiplier
+	move_and_slide()
+
+	# Add gravity.
+	velocity.y += gravity * delta
 
 func on_enemy_damaged(amount):
 	health -= amount
@@ -91,3 +125,6 @@ func play_random_move():
 		
 func _on_attack_timer_timeout():
 	can_attack = true
+
+func _on_flip_timer_timeout():
+	can_flip = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://d2g2j4p1llby6"]
+[gd_scene load_steps=64 format=3 uid="uid://d2g2j4p1llby6"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_7sn26"]
 [ext_resource type="Texture2D" uid="uid://d4gnxkmq0pr2r" path="res://assets/sprites/player/zed/Zed_idle_2.PNG" id="1_k1gfn"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://btyyhkjntb6d0" path="res://assets/sprites/player/zed/full_llama/Llama_jump.PNG" id="14_n5qhh"]
 [ext_resource type="Texture2D" uid="uid://dej7n28h5se5m" path="res://assets/sprites/player/zed/full_llama/Llama_damage_hit.PNG" id="15_f18nr"]
 [ext_resource type="Texture2D" uid="uid://puvlu17giwih" path="res://assets/sprites/player/zed/full_llama/Llama_roll.PNG" id="16_3fll4"]
+[ext_resource type="Texture2D" uid="uid://blmwcfcikue8" path="res://assets/sprites/impacts/Main_impact.PNG" id="19_41r31"]
 
 [sub_resource type="Animation" id="Animation_te8ti"]
 length = 0.001
@@ -874,8 +875,8 @@ _data = {
 "super": SubResource("Animation_u70op")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_er5ry"]
-size = Vector2(310, 115)
+[sub_resource type="CircleShape2D" id="CircleShape2D_b8atk"]
+radius = 91.96
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o721w"]
 radius = 80.0
@@ -1169,6 +1170,18 @@ tracks/23/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Marker2D/Weapon/CollisionShape2D:shape")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CircleShape2D_b8atk")]
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxqwy"]
@@ -2826,6 +2839,91 @@ _data = {
 "run": SubResource("Animation_31xrn")
 }
 
+[sub_resource type="Animation" id="Animation_40jej"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageImpact:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageImpact:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageImpact:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_4swq7"]
+resource_name = "impact"
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageImpact:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageImpact:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DamageImpact:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kriqh"]
+_data = {
+"RESET": SubResource("Animation_40jej"),
+"impact": SubResource("Animation_4swq7")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 10
 scale = Vector2(0.1, 0.1)
@@ -2871,7 +2969,7 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Weapon"]
 scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_er5ry")
+shape = SubResource("CircleShape2D_b8atk")
 
 [node name="ProjectileSpawn" type="Marker2D" parent="Marker2D/Weapon"]
 position = Vector2(340, -70)
@@ -2900,5 +2998,20 @@ autoplay = "idle"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SFX"]
 position = Vector2(0, -26)
 stream = ExtResource("8_c5x3p")
+
+[node name="DamageImpact" type="Sprite2D" parent="."]
+visible = false
+visibility_layer = 1024
+z_index = 10
+position = Vector2(-1.52588e-05, 1.90735e-06)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("19_41r31")
+hframes = 6
+frame = 5
+
+[node name="ImpactPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kriqh")
+}
 
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

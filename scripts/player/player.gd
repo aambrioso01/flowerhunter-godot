@@ -9,7 +9,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jumps = 1
 var lowJumpMultiplier = -30
 var fallMultiplier = -2
-@export var knockback_multiplier = 10
+@export var knockback_multiplier = 25
 
 # Health and status
 var health = 100
@@ -212,22 +212,22 @@ func check_jump(jumps_remaining):
 			animation.play(jump)
 
 # Player took damage and loses health
-func on_player_damaged(amount):
+func on_player_damaged(power, dmg_velocity):
 	if not is_dying:
 		# Calculate and apply knockback
-		var knock_direction
-		if velocity.x < 0:
-			knock_direction = -velocity.normalized() - Vector2(3, 0)
-		elif velocity.x >= 0:
-			knock_direction = -velocity.normalized() + Vector2(3, 0)
+		var knock_direction = Vector2(dmg_velocity.x - velocity.x, 0).normalized()
+		if dmg_velocity.x < 0:
+			knock_direction -= Vector2(30, 0)
+		elif dmg_velocity.x >= 0:
+			knock_direction += Vector2(30, 0)
 
-		var knock_power = amount * knockback_multiplier
+		var knock_power = power * knockback_multiplier
 		var knockback = knock_direction * knock_power
 		velocity = knockback
 		move_and_slide()
 		# Player wince face / flinch
 		animation.play(hurt)
-		health -= amount
+		health -= power
 		if health <= 0:
 			die()
 		elif llama_mode:

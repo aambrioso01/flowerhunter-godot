@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dgkmnis2fe61o"]
+[gd_scene load_steps=22 format=3 uid="uid://dgkmnis2fe61o"]
 
 [ext_resource type="Script" path="res://scripts/enemies/mushy.gd" id="1_oykws"]
 [ext_resource type="Texture2D" uid="uid://dcjnk2fer4oiq" path="res://assets/sprites/enemies/mushies/red_mushy/Mushy_Idle_sheet.PNG" id="2_ytmhq"]
@@ -169,7 +169,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(60, 0)]
+"values": [Vector2(10, -10)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -206,6 +206,18 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionPolygon2D2:polygon")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-9.0703, 90.703, 45.3515, 72.5624, 45.3515, 27.2109, 0, -81.6327, -81.6327, -108.844, -154.195, 9.0703, -145.125, 63.4921, -90.703, 90.703, -108.844, 172.336, -31.746, 174.603, -27.2109, 163.265)]
 }
 
 [sub_resource type="Animation" id="Animation_yeqqn"]
@@ -281,7 +293,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [PackedVector2Array(47.6191, 63.4921, 85.7143, 38.0952, 95.2381, -38.0952, 28.5714, -76.1905, -114.286, -76.1905, -171.429, -19.0476, -142.857, 28.5714, -19.0476, 76.1905), PackedVector2Array(47.6191, 63.4921, 85.7143, 38.0952, 95.2381, -38.0952, 28.5714, -76.1905, -114.286, -85.7143, -171.429, -19.0476, -142.857, 47.619, -19.0476, 76.1905)]
+"values": [PackedVector2Array(47.6191, 63.4921, 85.7143, 38.0952, 95.2381, -38.0952, 28.5714, -76.1905, -114.286, -76.1905, -209.524, -76.1905, -200, 57.1429, -19.0476, 76.1905), PackedVector2Array(47.6191, 63.4921, 85.7143, 38.0952, 95.2381, -38.0952, 28.5714, -76.1905, -190.476, -95.2381, -200, -19.0476, -200, 66.6667, -19.0476, 76.1905)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -293,7 +305,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-20, 20), Vector2(-70, 20)]
+"values": [Vector2(-30, 10), Vector2(-60, 10)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -318,6 +330,30 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [2, 5, 2]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CollisionPolygon2D2:polygon")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(-9.0703, 90.703, 45.3515, 72.5624, 45.3515, 27.2109, 0, -81.6327, -81.6327, -108.844, -154.195, 9.0703, -145.125, 63.4921, -90.703, 90.703, -108.844, 172.336, -31.746, 174.603, -27.2109, 163.265), PackedVector2Array(-54.4218, 90.703, 0, 72.5624, 0, 18.1406, -54.4218, -63.4921, -163.265, -72.5624, -172.336, 9.0703, -172.336, 72.5624, -90.703, 90.703, -145.125, 163.265, -72.5624, 163.265, -54.4218, 145.125), PackedVector2Array(18.1406, 63.4921, -18.1406, 36.2812, -9.0703, -18.1406, -90.703, -27.2109, -136.054, -18.1406, -172.336, 9.0703, -172.336, 72.5624, -154.195, 99.7733, -99.7733, 136.054, -9.0703, 154.195, 27.2109, 90.703)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("CollisionPolygon2D2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(50, -20), Vector2(50, -15), Vector2(50, -10), Vector2(70, -50)]
 }
 
 [sub_resource type="Animation" id="Animation_21k8m"]
@@ -548,15 +584,15 @@ tracks/8/keys = {
 }
 tracks/9/type = "value"
 tracks/9/imported = false
-tracks/9/enabled = false
+tracks/9/enabled = true
 tracks/9/path = NodePath("CollisionPolygon2D2:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(10, 0), Vector2(60, 0)]
+"values": [Vector2(20, -10), Vector2(20, -10), Vector2(20, -10), Vector2(70, 0), Vector2(30, -40)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -569,6 +605,18 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -20), Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CollisionPolygon2D2:polygon")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(81.6327, 136.054, 108.844, 63.4921, 99.7732, -9.0703, 36.2812, -99.7732, -36.2812, -108.844, -99.7733, -99.7732, -172.336, -9.07031, -181.406, 45.3515, -145.125, 117.914, -99.7733, 163.265, -9.0703, 163.265)]
 }
 
 [sub_resource type="Animation" id="Animation_cgskc"]
@@ -809,7 +857,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(47.6191, 63.4921, 123.81, 57.1429, 142.857, -9.52381, 114.286, -57.1429, 57.1429, -95.2381, 0, -190.476, -57.1429, -171.429, -133.333, -95.2381, -171.429, -19.0476, -161.905, 38.0952, -95.2381, 63.4921, 15.873, 63.4921), PackedVector2Array(123.81, 38.0952, 142.857, -9.52381, 114.286, -66.6667, 66.6667, -95.2381, 28.5714, -171.429, -28.5714, -161.905, -114.286, -95.2381, -152.381, -19.0476, -152.381, 28.5714, -85.7143, 57.1429, 19.0476, 57.1429), PackedVector2Array(180.952, 66.6667, 200, -28.5714, 171.429, -104.762, 76.1905, -152.381, 114.286, -57.1429, 38.0952, -19.0476, -57.1429, -19.0476, -142.857, -104.762, -209.524, -76.1905, -133.333, 28.5714, -19.0476, 95.2381, 95.2381, 123.81), PackedVector2Array(152.381, 38.0952, 180.952, -9.52381, 142.857, -85.7143, 76.1905, -152.381, -19.0476, -190.476, -47.619, -95.2381, -114.286, -47.619, -133.333, 28.5714, 0, 57.1429), PackedVector2Array(123.81, 38.0952, 180.952, -9.52381, 142.857, -85.7143, 95.2381, -161.905, 28.5714, -209.524, -19.0476, -190.476, -66.6667, -114.286, -123.81, -57.1429, -133.333, 28.5714, 0, 57.1429), PackedVector2Array(114.286, 85.7143, 171.429, 9.52381, 190.476, -76.1905, 38.0952, 9.52381, -47.619, 0, -95.2381, -38.0952, -38.0952, -133.333, -114.286, -114.286, -161.905, -38.0952, -161.905, 85.7143, -104.762, 133.333, -28.5714, 142.857)]
+"values": [PackedVector2Array(47.6191, 63.4921, 123.81, 57.1429, 142.857, -9.52381, 114.286, -57.1429, 57.1429, -95.2381, 0, -190.476, -57.1429, -171.429, -133.333, -95.2381, -171.429, -19.0476, -161.905, 38.0952, -95.2381, 63.4921, 15.873, 63.4921), PackedVector2Array(123.81, 38.0952, 142.857, -9.52381, 114.286, -66.6667, 66.6667, -95.2381, 28.5714, -171.429, -28.5714, -161.905, -114.286, -95.2381, -152.381, -19.0476, -152.381, 28.5714, -85.7143, 57.1429, 19.0476, 57.1429), PackedVector2Array(228.571, 107.936, 238.095, -6.34924, 228.571, -111.111, 76.1905, -152.381, -228.571, -101.587, -219.048, 117.46, -28.5714, 136.508, 114.286, 146.032), PackedVector2Array(152.381, 38.0952, 180.952, -9.52381, 142.857, -85.7143, 76.1905, -152.381, -19.0476, -190.476, -47.619, -95.2381, -114.286, -47.619, -133.333, 28.5714, 0, 57.1429), PackedVector2Array(123.81, 38.0952, 180.952, -9.52381, 142.857, -85.7143, 95.2381, -161.905, 28.5714, -209.524, -19.0476, -190.476, -66.6667, -114.286, -123.81, -57.1429, -133.333, 28.5714, 0, 57.1429), PackedVector2Array(142.857, 146.032, 247.619, 3.17457, 190.476, -76.1905, -38.0952, -133.333, -114.286, -114.286, -209.524, -44.4445, -219.048, 126.984, -66.6667, 165.079)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -895,124 +943,16 @@ _data = {
 "swipe": SubResource("Animation_1tlu2")
 }
 
-[sub_resource type="Animation" id="Animation_4swq7"]
-resource_name = "impact"
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_40jej"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kriqh"]
-_data = {
-"RESET": SubResource("Animation_40jej"),
-"impact": SubResource("Animation_4swq7")
-}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vpsbe"]
-size = Vector2(305.088, 5.14216)
+size = Vector2(186.577, 5.14216)
 
 [node name="RedMushyTats" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.1, 0.1)
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 collision_priority = 2.0
 script = ExtResource("1_oykws")
+sprint_multiplier = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ytmhq")
@@ -1031,11 +971,6 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
-position = Vector2(60, 0)
-scale = Vector2(1.1025, 1.1025)
-polygon = PackedVector2Array(72.5624, 108.844, 99.7732, 63.4921, 108.844, 9.0703, 54.4218, -154.195, -72.5624, -154.195, -172.336, 0, -172.336, 36.2812, -136.054, 108.844, -108.844, 172.336, -31.746, 174.603, 54.4218, 172.336)
-
 [node name="DamageArea" parent="." instance=ExtResource("6_n2mdu")]
 collision_layer = 4
 collision_mask = 1
@@ -1047,24 +982,18 @@ scale = Vector2(1.05, 1.05)
 polygon = PackedVector2Array(47.6191, 63.4921, 123.81, 57.1429, 142.857, -9.52381, 114.286, -57.1429, 57.1429, -95.2381, 0, -190.476, -57.1429, -171.429, -133.333, -95.2381, -171.429, -19.0476, -161.905, 38.0952, -95.2381, 63.4921, 15.873, 63.4921)
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DamageArea"]
-libraries = {
-"": SubResource("AnimationLibrary_kriqh")
-}
-
 [node name="Sprite2D" type="Sprite2D" parent="DamageArea"]
 visible = false
 visibility_layer = 1024
 z_index = 10
-position = Vector2(-20, 70)
+position = Vector2(-130, 20)
 texture = ExtResource("9_2qvr4")
 hframes = 6
 
 [node name="AgroZone" parent="." instance=ExtResource("7_hsk4c")]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroZone"]
-position = Vector2(-10, -40)
+position = Vector2(-758.674, -40)
 scale = Vector2(12.6347, -91.4012)
 shape = SubResource("RectangleShape2D_vpsbe")
 
@@ -1083,4 +1012,13 @@ wait_time = 2.0
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 
+[node name="FlipTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="."]
+position = Vector2(10, -10)
+scale = Vector2(1.1025, 1.1025)
+polygon = PackedVector2Array(-9.0703, 90.703, 45.3515, 72.5624, 45.3515, 27.2109, 0, -81.6327, -81.6327, -108.844, -154.195, 9.0703, -145.125, 63.4921, -90.703, 90.703, -108.844, 172.336, -31.746, 174.603, -27.2109, 163.265)
+
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="FlipTimer" to="." method="_on_flip_timer_timeout"]
